@@ -1,0 +1,275 @@
+﻿@using BeautySalon.Helpers
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Scarlett</title>
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Infant:400i,700i" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <header class="container-fluid">
+        <div id="topRowHeader" class="row">
+            <div id="phoneInHeader" class="col-md-3 hidden-sm hidden-xs">
+                <h2>
+                    <span class="glyphicon glyphicon-earphone"></span> (067) 777-37-73
+                </h2>
+                <a data-toggle="modal" data-target="#Callback"><span>Перезвонить вам?</span></a>
+            </div>
+            <div id="pictureInHeader" class="col-md-2 col-sm-4">
+                <img class="img-responsive" src="~/images/header_brand.png">
+            </div>
+            <div id="titleInHeader" class="col-md-4 col-sm-8">
+                <a href="#">
+                    <h1>Скарлет</h1>
+                    <p>салон красоты</p>
+                </a>
+            </div>
+            <div id="buttonInHeader" class="col-md-3 hidden-sm hidden-xs">
+                <button type="button" class="btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div id="phoneInHeader2" class="col-sm-6 col-xs-6 hidden-md hidden-lg">
+                <h2>
+                    <span class="glyphicon glyphicon-earphone"></span> (067) 777-37-73
+                </h2>
+                <a data-toggle="modal" data-target="#Callback"><span>Перезвонить вам?</span></a>
+            </div>
+            <div id="buttonInHeader2" class="col-sm-6 col-xs-6 hidden-md hidden-lg">
+                <button type="button" class="btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
+            </div>
+        </div>
+
+        <div id="secondRowHeader" class="row">
+            <nav class="navbar navbar-dafault" data-spy="affix" data-offset-top="214">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle btn roundBtn" data-toggle="collapse"
+                                data-target="#menuInHeader">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="collapse navbar-collapse" id="menuInHeader">
+                        <ul class="nav navbar-nav">
+                            @*<li>@Html.ActionLink("О салоне", "Index", "Home")</li>*@
+                            <li class="@Html.ActiveLink(actions: "Index", controllers: "Home")">
+                                <a href="@Url.Action("Index", "Home")">О салоне</a>
+                            </li>
+                            <li class="dropdown @Html.ActiveLink(actions: "HaircutAndStyling,HairColoring", controllers: "Home")">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    Услуги <span class="badge">8</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    @*<li><a href="HaircutAndStyling.html">Стрижка и укладка</a></li>*@
+                                    <li class="@Html.ActiveLink(actions: "HaircutAndStyling", controllers: "Home")">
+                                        <a href="@Url.Action("HaircutAndStyling", "Home")">Стрижка и укладка</a>
+                                    </li>
+                                    @*<li><a href="#">Окрашивание</a></li>*@
+                                    <li class="@Html.ActiveLink(actions: "HairColoring", controllers: "Home")">
+                                        <a href="@Url.Action("HairColoring", "Home")">Окрашивание</a>
+                                    </li>
+                                    <li><a href="#">Процедуры для волос</a></li>
+                                    <li><a href="#">Визаж</a></li>
+                                    <li><a href="#">Ногтевой сервис</a></li>
+                                    <li><a href="#">Косметологические услуги</a></li>
+                                    <li><a href="#">Массаж</a></li>
+                                    <li><a href="#">Мужской салон красоты</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="Prices.html">Цены</a></li>
+                            @*<li><a href="#">Фотографии</a></li>*@
+                            <li class="@Html.ActiveLink(actions: "Gallery", controllers: "Home")">
+                                <a href="@Url.Action("Gallery", "Home")">Фотографии</a>
+                            </li>
+                            <li><a href="#">Акции и новости</a></li>
+                            <li><a href="#">Дисконтная программа</a></li>
+                            @*<li><a href="#">Контакты</a></li>*@
+                            <li class="@Html.ActiveLink(actions: "Contacts", controllers: "Home")">
+                                <a href="@Url.Action("Contacts", "Home")">Контакты</a>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    О нас <span class="badge">2</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Наша команда</a></li>
+                                    <li><a href="#">Отзывы</a></li>
+                                </ul>
+                            </li>
+                            @Html.Partial("_LoginPartial")
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="BookService" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+                        <h4 class="modal-title">Запись в салон</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="form-group">
+                                <label for="date">Выберите дату:</label>
+                                <input type="date" class="form-control" id="date" required name="date">
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Выберите время:</label>
+                                <input type="time" class="form-control" id="time" required name="time">
+                            </div>
+                            <div class="form-group">
+                                <label>Выберите вид услуги:</label>
+                                <select class="form-control">
+                                    <option value="haircut">Парикмахерские услуги</option>
+                                    <option value="coloration">Окрашивание</option>
+                                    <option value="hairTreatment">Процедуры для волос</option>
+                                    <option value="makeup">Визаж</option>
+                                    <option value="nailService">Ногтевой сервис</option>
+                                    <option value="cosmetology">Косметологические услуги</option>
+                                    <option value="massage">Массаж</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Как к вам можно обращаться?" required name="clientName">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Контактный номер" required name="phone">
+                            </div>
+                            <button type="submit" class="btn roundBtn">Отправить</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn roundBtn" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="Callback" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+                        <h4 class="modal-title">Обратный звонок</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Как к вам можно обращаться?" required name="clientName">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Контактный номер" required name="phone">
+                            </div>
+                            <button type="submit" class="btn roundBtn">Отправить</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn roundBtn" data-dismiss="modal">Закрыть</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </header>
+
+
+        @RenderBody()
+        
+        <footer>
+            <div id="titleInFooter">
+                <a href="#">
+                    <h3>Скарлет</h3>
+                    <p>салон красоты</p>
+                </a>
+            </div>
+            <div class="container-fluid">
+                <div id="signUpInFooter" class="row">
+                    <div class="col-sm-8 col-sm-offset-1">
+                        <form class="form-horizontal">
+                            <div class="form-group row">
+                                <label for="email" class="control-label col-sm-4 signUpItem">
+                                    Подпишитесь на выгодные
+                                    предложения
+                                </label>
+                                <!--
+                            -->
+                                <div class="col-sm-5 signUpItem">
+                                    <input id="email" type="email" class="form-control" placeholder="Напишите свой e-mail">
+                                </div>
+                                <!--
+                            -->
+                                <div class="col-sm-3 signUpItem">
+                                    <button type="submit" class="btn roundBtn">Подписаться</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-sm-2">
+                        <label>Присойденяйтесь</label>
+                        <div>
+                            <a class="btn btn-social-icon btn-instagram">
+                                <span class="fa fa-instagram"></span>
+                            </a>
+                            <a class="btn btn-social-icon btn-twitter">
+                                <span class="fa fa-twitter"></span>
+                            </a>
+                            <a class="btn btn-social-icon btn-facebook">
+                                <span class="fa fa-facebook"></span>
+                            </a>
+                            <a class="btn btn-social-icon btn-pinterest">
+                                <span class="fa fa-pinterest"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div id="contactInfoInFooter" class="row">
+                    <div class="col-sm-10 col-sm-offset-1 row">
+                        <div class="col-sm-3">
+                            <p><span class="glyphicon glyphicon-earphone"></span></p>
+                            <p>Позвоните сегодня:</p>
+                            <p>(067) 777-37-73</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <p><span class="glyphicon glyphicon-envelope"></span></p>
+                            <p>Контактный e-mail:</p>
+                            <p>mail@scarlett.dp.ua</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <p><span class="glyphicon glyphicon-map-marker"></span></p>
+                            <p>Адрес:</p>
+                            <p>г.Днепропетровск, Украина, ул.Солнечная 4А</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <p><span class="glyphicon glyphicon-time"></span></p>
+                            <p>Часы работы:</p>
+                            <p>без выходных: с 9.00 до 20.00</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="copyInfo" class="row">
+                    "Скарлет" &copy; @DateTime.Now.Year
+                </div>
+            </div>
+        </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

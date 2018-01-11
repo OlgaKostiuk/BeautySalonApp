@@ -1,0 +1,182 @@
+﻿
+@{
+    ViewBag.Title = "Стрижка и укладка";
+}
+
+<main class="container-fluid">
+    <div class="row">
+        <div id="haircutAndStylingBtnContainer" class="col-sm-10 col-sm-offset-1">
+            <h2 class="haircutItem">
+                СТРИЖКА И УКЛАДКА
+            </h2>
+            <div class="btn-group haircutItem">
+                <a href="#haircutTrends"><button id="haircutBtn" type="button" class="btn roundBtn leftBtnInGroup">СТРИЖКА</button></a>
+                <!--
+                -->
+                <a href="#stylingTypes"><button id="stylingBtn" type="button" class="btn roundBtn rightBtnInGroup">УКЛАДКА</button></a>
+            </div>
+        </div>
+        <div id="diagnosticContainer" class="col-sm-10 col-sm-offset-1">
+            <h3 class="haircutItem">
+                ДИАГНОСТИКА
+            </h3>
+            <p class="haircutItem">
+                Подбираем стрижку с учетом особенностей черт лица и формы головы. Предоставим рекомендации по уходу дома.
+            </p>
+        </div>
+    </div>
+
+    <div id="faceShape" class="row">
+        <div id="topNav" class="row">
+            <ul class="nav nav-pills col-sm-10 col-sm-offset-1">
+                <li class="active">
+                    <a data-toggle="pill" href="#squareFace">
+                        <img src="~/images/squareFace.png" alt="" class="img-responsive">
+                        <span>Прямоугольная</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-toggle="pill" href="#ellipseFace">
+                        <img src="~/images/ellipseFace.png" alt="" class="img-responsive">
+                        <span>Овальная</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-toggle="pill" href="#roundFace">
+                        <img src="~/images/roundFace.png" alt="" class="img-responsive">
+                        <span>Круглая</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="tab-content col-sm-10 col-sm-offset-1">
+            <div id="squareFace" class="tab-pane fade in active">
+                <h4>У прямоугольного лица ширина скул, лба и щек почти одинаковая. Линия подбородка квадратная с жесткими углами.</h4>
+                <p>Прямоугольное лицо – это прямые жесткие линии челюсти и скул. Чтобы смягчить переходы, брови нужно делать дугообразными, без четкого излома. Вам подойдут высокие округлые брови, можно даже сделать их достаточно широкими и заметными.</p>
+            </div>
+            <div id="ellipseFace" class="tab-pane fade">
+                <h4>Овальное лицо слегка сужено ко лбу и подбородку, самое широкое место в щеках. Линия подбородка округлая, не слишком широкая.</h4>
+                <p>Овальная форма лица считается идеальной, и главная задача бровей не нарушить красивые естественные пропорции. Если вы счастливая обладательница правильного овала лица, выбирайте горизонтальные брови. Их можно немного закруглить, но не нужно слишком высоко поднимать излом брови. Это визуально вытянет лицо.</p>
+            </div>
+            <div id="roundFace" class="tab-pane fade">
+                <h4>
+                    У круглого лица плавные изгибы без жестких углов.
+                    Длина лица практически равняеится его ширине
+                </h4>
+                <p>Противоположность вытянутому лицу – круглое. Соответственно, и задача стоит обратная – визуально вытянуть форму лица и приблизить ее к овалу. Обладательницам круглого лица подойдут брови с заметным изломом, высоко поднятые, с тонким кончиком и немного более широким началом. Тут очень важно не переусердствовать и не сделать запятую вместо красивой брови.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-10 col-sm-offset-1 ourWorks">
+            <h3 class="haircutItem">
+                НАШИ РАБОТЫ
+            </h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <a href="~/images/haircut1.jpg" target="_blank">
+                        <img src="~/images/haircut1.jpg" alt="haircutPhoto" class="img-responsive img-thumbnail">
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="~/images/haircut2.jpg" target="_blank">
+                        <img src="~/images/haircut2.jpg" alt="haircutPhoto" class="img-responsive img-thumbnail">
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a href="~/images/haircut3.jpg" target="_blank">
+                        <img src="~/images/haircut3.jpg" alt="haircutPhoto" class="img-responsive img-thumbnail">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <article id="haircutTrends">
+            <h3 class="haircutItem">
+                ТРЕНДЫ ДЛЯ СТРИЖЕК
+            </h3>
+            <div class="col-sm-9 col-sm-offset-2">
+                <div class="row haircutItem">
+                    <div class="col-sm-6">
+                        <img src="~/images/trend1.jpg" alt="trendInHaircutPhoto" class="img-responsive leftPhoto">
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="~/images/trend2.jpg" alt="trendInHaircutPhoto" class="img-responsive rightPhoto">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9 col-sm-offset-1">
+                <div class="row haircutItem">
+                    <div class="col-sm-6">
+                        <img src="~/images/trend3.jpg" alt="trendInHaircutPhoto" class="img-responsive leftPhoto">
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="~/images/trend4.jpg" alt="trendInHaircutPhoto" class="img-responsive rightPhoto">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-9 col-sm-offset-2">
+                <div class="row haircutItem">
+                    <div class="col-sm-6">
+                        <img src="~/images/trend5.jpg" alt="trendInHaircutPhoto" class="img-responsive leftPhoto">
+                    </div>
+                    <div class="col-sm-6">
+                        <img src="~/images/trend6.jpg" alt="trendInHaircutPhoto" class="img-responsive rightPhoto">
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </div>
+    <div class="row">
+        <div id="stylingTypes" class="col-sm-10 col-sm-offset-1">
+            <h3 class="haircutItem">
+                УКЛАДКА И ПРИЧЕСКИ
+            </h3>
+            <div class="row">
+                <div id="styling1" class="col-sm-6 styling">
+                    <span>
+                        <img src="~/images/styling1.jpg" alt="" class="img-responsive">
+
+                        <div class="layer">
+                            <a href="#"><button type="button" class="btn roundBtn rightStylingBtn bottomStylingBtn">Плетение</button></a>
+                        </div>
+                    </span>
+                </div>
+                <div id="styling2" class="col-sm-6 styling">
+                    <span>
+                        <img src="~/images/styling2.jpeg" alt="" class="img-responsive">
+
+                        <div class="layer">
+                            <a href="#"><button type="button" class="btn roundBtn leftStylingBtn bottomStylingBtn">Прямые</button></a>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div class="row">
+                <div id="styling3" class="col-sm-6 styling">
+                    <span>
+                        <img src="~/images/styling3.jpg" alt="" class="img-responsive">
+
+                        <div class="layer">
+                            <a href="#"><button type="button" class="btn roundBtn rightStylingBtn topStylingBtn">Прически</button></a>
+                        </div>
+                    </span>
+                </div>
+                <div id="styling4" class="col-sm-6 styling">
+                    <span>
+                        <img src="~/images/styling4.jpg" alt="" class="img-responsive">
+
+                        <div class="layer">
+                            <a href="#"><button type="button" class="btn roundBtn leftStylingBtn topStylingBtn">Кудри</button></a>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+

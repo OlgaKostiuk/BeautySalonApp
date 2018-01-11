@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Контакты";
+}
+
+<main id="mainContacts" class="container-fluid">
+	
+    <h2>КОНТАКТЫ</h2>
+	
+    <div class="col-sm-5 col-sm-offset-1">
+        <div class="jumbotron">
+            <h3>Запишитесь по телефонам:</h3>
+            <div class="row">
+                <div class="col-sm-6">
+                    <p>(067) 777-37-73</p>
+                    <p>(098) 777-37-73</p>
+                </div>
+                <div class="col-sm-6 contactPhone">
+                    <a href="#"><span>Перезвонить вам?</span></a>
+                </div>
+            </div>
+            <p>E-mail: mail@salonscarlett.dp.ua</p>
+            <p>г.Днепропетровск, Украина, ул.Солнечная 4А</p>
+            <p>Работаем без выходных: с 9.00 до 20.00</p>
+        </div>
+    </div>
+    <div class="col-sm-5">
+        <div id="googleMap" style="width:100%;height:400px;"></div>
+		
+        <script>
+            function myMap() {
+                var myLatLng = {lat: 48.441893, lng: 35.017189};
+                var mapProp= {
+                    center:myLatLng,
+                    zoom:16
+                };
+                var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+                var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    title: 'Hello World!'
+                });
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsUmvTtv0CrpxHiZ_9_yN39JRGGT65MLY&callback=myMap"></script>
+    </div>
+</main>

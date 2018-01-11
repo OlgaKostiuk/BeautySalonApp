@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "О салоне";
+}
+
+<main id="mainHome" class="container-fluid">
+    <div id="carouselHomeWrapper" class="container-fluid">
+        <div id="carouselHome" class="carousel slide" data-ride="carousel">
+
+            <ol class="carousel-indicators">
+                <li data-target="#carouselHome" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselHome" data-slide-to="1"></li>
+                <li data-target="#carouselHome" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img src="~/images/slide1.jpg" alt="">
+                    <div class="carousel-caption col-xs-5 col-xs-offset-4 darkCarouselInner">
+                        <h3>Всякий раз, когда вы чувствуете себя слишком уставшей...</h3>
+                        <p>в депрессии или встревожены повседневной рутиной, суетой ...</p>
+                        <p>у нас есть ответ для вас!</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="~/images/slide2.jpg" alt="">
+                    <div class="carousel-caption col-xs-5 col-xs-offset-4 lightCarouselInner">
+                        <h3>Только этой весной ...</h3>
+                        <p>Все наши услуги маникюра/педикюра будут</p>
+                        <p>дешевле в два раза, только в этот весенний период!</p>
+                    </div>
+                </div>
+
+                <div class="item">
+                    <img src="~/images/slide3.jpg" alt="">
+                    <div class="carousel-caption col-xs-5 col-xs-offset-4 darkCarouselInner">
+                        <h3>Массаж дешевле на 15%!</h3>
+                        <p>Эта скидка будет действовать только в марте, так что поторопитесь ...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="servicesHomeWrapper" class="col-sm-10 col-sm-offset-1">
+        <h3>Популярные услуги</h3>
+        <div class="row">
+            <div id="firstHomeService" class="col-sm-6 homeServices">
+                <h4>Стрижка и укладка</h4>
+                <p>
+                    Мастер салона поможет вам подобрать стильную прическу, которая подчеркнет ваши сильные стороны и
+                    скроет недостатки.
+                </p>
+                <a href="HaircutAndStyling.html"><button type="button" class="btn roundBtn">Подробнее</button></a>
+            </div>
+            <div id="secondHomeService" class="col-sm-6 homeServices">
+                <h4>Макияж</h4>
+                <p>
+                    Мастер поможет создать как классический макияж, так и подобрать образ по стилю мероприятия.
+                </p>
+                <a href="#"><button type="button" class="btn roundBtn">Подробнее</button></a>
+            </div>
+        </div>
+        <div class="row">
+            <div id="thirdHomeService" class="col-sm-6 homeServices">
+                <h4>Маникюр</h4>
+                <p>
+                    Представьте, ваши ногти выглядят ухоженно и на них ваш любимый цвет.
+                </p>
+                <a href="#"><button type="button" class="btn roundBtn">Подробнее</button></a>
+            </div>
+            <div id="fourthHomeService" class="col-sm-6 homeServices">
+                <h4>Массаж</h4>
+                <p>
+                    Наш салон предоставляет услуги массажа разных видов и техник.
+                </p>
+                <a href="#"><button type="button" class="btn roundBtn">Подробнее</button></a>
+            </div>
+        </div>
+        <button type="button" class="btn roundBtn">Посмотреть последние<br />выгодные предложения</button>
+    </div>
+    <article class="container-fluid">
+        <div class="row">
+            <div class="col-md-5 col-md-offset-1">
+                <h4>Почему вам будет комфортно?</h4>
+                <p>
+                    Чуткие и опытные мастера, которые понимают желания клиента. Атмосфера радушия и безмятежности.
+                    Профессиональная косметика и отличный сервис. Это то, что отличает наш салон красоты. Но главное –
+                    это подход к своему делу. Он – особенный.
+                </p>
+                <p>
+                    Наша задача – оправдать ваши ожидания. Поэтому клиенты приходят к нам снова и снова и рекомендуют
+                    нас своим друзьям и близким. А это значит, мы все делаем правильно.
+                </p>
+                <p>
+                    Нет и не может быть единого, общего для всех рецепта красоты. Поэтому мы не навязываем глянцевые
+                    шаблоны. Наша задача – раскрыть вашу природную красоту.
+
+                    Мы слышим вас. При этом, работая над образом, мастер учитывает характер, темперамент, тип волос и
+                    форму лица.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <img src="~/images/relax.jpg" alt="relaxPicture" class="img-responsive">
+            </div>
+        </div>
+    </article>
+</main>
