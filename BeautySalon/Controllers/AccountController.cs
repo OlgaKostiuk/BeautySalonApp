@@ -186,6 +186,8 @@ namespace BeautySalon.Controllers
 
                     //return RedirectToAction("Index", "Home");
 
+                    await UserManager.AddToRoleAsync(user.Id, RoleTypes.User);
+
                     // генерируем токен для подтверждения регистрации
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // создаем ссылку для подтверждения

@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(m => m.Gender, new { @class = "col-md-2 control-label" })
-            <label class="radio-inline">@Html.RadioButtonFor(m => m.Gender, "женский", new { id = "female" })женский</label>
+            <label class="radio-inline">@Html.RadioButtonFor(m => m.Gender, "женский", new { id = "female", @checked = "checked" })женский</label>
             <label class="radio-inline">@Html.RadioButtonFor(m => m.Gender, "мужской", new { id = "male" })мужской</label>
             @*@Html.LabelFor(m => m.Gender, new {@class = "col-md-2 control-label"})
                 <div class="col-md-5">

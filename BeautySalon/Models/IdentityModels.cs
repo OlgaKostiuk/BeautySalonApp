@@ -35,4 +35,10 @@ namespace BeautySalon.Models
             return new ApplicationDbContext();
         }
     }
+
+    public static class RoleTypes
+    {
+        public const string Admin = "Admin";
+        public const string User = "User";
+    }
 }
