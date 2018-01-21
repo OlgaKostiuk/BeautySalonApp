@@ -6,6 +6,12 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BeautySalon.Models
 {
+    public static class RoleTypes
+    {
+        public const string Admin = "Admin";
+        public const string User = "User";
+    }
+
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
@@ -14,20 +20,12 @@ namespace BeautySalon.Models
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
             var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
             // Add custom user claims here
+            userIdentity.AddClaim(new Claim(ClaimTypes.Name, this.Name));
+            userIdentity.AddClaim(new Claim(ClaimTypes.Gender, this.Gender));
             return userIdentity;
         }
-    }
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
+        public string Name { get; set; }
+        public string Gender { get; set; }
     }
 }

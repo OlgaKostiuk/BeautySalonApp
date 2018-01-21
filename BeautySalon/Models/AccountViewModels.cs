@@ -65,6 +65,14 @@ namespace BeautySalon.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Имя")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "Пол")]
+        public string Gender { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
