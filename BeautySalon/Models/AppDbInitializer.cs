@@ -10,7 +10,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace BeautySalon.Models
 {
     //public class AppDbInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
-    public class AppDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
+    public class AppDbInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
+    //public class AppDbInitializer : DropCreateDatabaseIfModelChanges<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {

@@ -32,33 +32,6 @@ namespace BeautySalon.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
-            //// Initialize default identity roles
-            //var roleStore = new RoleStore<IdentityRole>(context);
-            //var roleManager = new RoleManager<IdentityRole>(roleStore);
-            //// RoleTypes is a class containing constant string values for different roles
-            //List<IdentityRole> identityRoles = new List<IdentityRole>();
-            //identityRoles.Add(new IdentityRole() { Name = RoleTypes.Admin });
-            //identityRoles.Add(new IdentityRole() { Name = RoleTypes.User });
-
-            //foreach (IdentityRole role in identityRoles)
-            //{
-            //    roleManager.Create(role);
-            //}
-
-            //// Initialize default user
-            //var userStore = new UserStore<ApplicationUser>(context);
-            //var userManager = new UserManager<ApplicationUser>(userStore);
-            //ApplicationUser admin = new ApplicationUser();
-            //admin.Email = "admin@admin.com";
-            //admin.UserName = "admin@admin.com";
-
-            //userManager.Create(admin, "1Admin!");
-            //userManager.AddToRole(admin.Id, RoleTypes.Admin);
-
-            //// Add code to initialize context tables
-
-            //base.Seed(context);
         }
     }
 }

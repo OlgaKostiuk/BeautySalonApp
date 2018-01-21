@@ -6,6 +6,12 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BeautySalon.Models
 {
+    public static class RoleTypes
+    {
+        public const string Admin = "Admin";
+        public const string User = "User";
+    }
+
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
@@ -21,24 +27,5 @@ namespace BeautySalon.Models
 
         public string Name { get; set; }
         public string Gender { get; set; }
-    }
-
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
-    {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
-
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
-    }
-
-    public static class RoleTypes
-    {
-        public const string Admin = "Admin";
-        public const string User = "User";
     }
 }
