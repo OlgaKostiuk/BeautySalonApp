@@ -17,14 +17,17 @@ namespace BeautySalon.Models.Promotions
 
         [Required]
         [Display(Name = "Полное описание")]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         [Required]
         [Display(Name = "Начало действия акции:")]
+        [DataType(DataType.Date)]
         public DateTime? StartDate { get; set; }
 
         [Required]
-        [Display(Name = "Окончания действия акции:")]
+        [Display(Name = "Окончание действия акции:")]
+        [DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
 
         [Display(Name = "Картинки")]

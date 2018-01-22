@@ -32,7 +32,14 @@ namespace BeautySalon.Controllers
         {
             if (ModelState.IsValid)
             {
-                Promotion promotion = new Promotion {Title = model.Title, Description = model.Description, Date = DateTime.Today};
+                Promotion promotion = new Promotion
+                {
+                    Title = model.Title,
+                    Description = model.Description,
+                    Date = DateTime.Today,
+                    StartDate = model.StartDate,
+                    EndDate = model.EndDate
+                };
                 UnitOfWork.Instance.PromotionRepository.Create(promotion);
                 return RedirectToAction("Index", "Home");
             }
