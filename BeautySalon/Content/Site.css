@@ -8,7 +8,6 @@
 * {
     font-size: 18pt;
     font-family: 'Cormorant Infant', serif;
-    font-style: italic;
 }
 
 h1 {
@@ -222,7 +221,7 @@ h4 {
     top: 0;
     width: 100%;
     background-color: white;
-    z-index: 100;
+    z-index: 1000;
     right: 0;
     left: 0;
 }
@@ -654,7 +653,6 @@ footer {
         padding-right: 2px;
     }
 
-
 .customInput {
     font-size: 16pt;
     font-family: sans-serif;
@@ -668,12 +666,15 @@ footer {
     line-height: 1;
     outline: none;
     height: auto;
-    max-width: 60%;
 }
 
-textarea.customInput {
-    border: 2px solid #19204E;
-    border-left: none;
-    border-right: none;
-    padding: 20px;
+div#ui-datepicker-div {
+    z-index: 501 !important;
+    width: initial;
+}
+
+.note-editor * {
+    font-size: initial;
+    font-family: initial;
+    color: initial;
 }
