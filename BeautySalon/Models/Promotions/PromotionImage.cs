@@ -8,14 +8,14 @@ namespace BeautySalon.Models.Promotions
 {
     public class PromotionImage
     {
-        public virtual int Id { get; set; }
+        public int Id { get; set; }
 
-        public virtual string Path { get; set; }
+        public string Path { get; set; }
 
-        public virtual bool IsDeleted { get; set; }
+        public bool IsDeleted { get; set; }
 
         [ForeignKey(nameof(Promotion))]
-        public virtual int PromotionId { get; set; }
-        public Promotion Promotion { get; set; }
+        public int PromotionId { get; set; }
+        public virtual Promotion Promotion { get; set; }
     }
 }

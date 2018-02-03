@@ -1,4 +1,5 @@
-﻿@model BeautySalon.Models.Promotions.PromotionViewModel
+﻿@using System.Web.Configuration
+@model BeautySalon.Models.Promotions.PromotionViewModel
 
 <div class="col-sm-10 col-sm-offset-1">
     <h2>@ViewBag.Title</h2>
@@ -52,7 +53,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input class="form-control" type="file" id="pictures" name="pictures" accept="image/jpeg,image/png,image/gif" multiple="multiple" />
+                <input class="customInput form-control" type="file" id="pictures" name="pictures" accept="image/jpeg,image/png,image/gif" multiple="multiple" />
                 @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -62,7 +63,7 @@
             {
                 foreach (var img in Model.Images)
                 {
-                    <img class="img-thumbnail picture" src="@img.Path" />
+                    <img class="img-thumbnail picture" src="@(WebConfigurationManager.AppSettings["ImagesFolder"] + img.Path)" />
                 }
             }
         </div>

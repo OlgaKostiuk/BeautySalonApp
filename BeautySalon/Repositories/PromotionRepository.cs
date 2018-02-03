@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using BeautySalon.Models;
 using BeautySalon.Models.Promotions;
+using WebGrease.Css.Extensions;
 
 namespace BeautySalon.Repositories
 {
@@ -25,12 +26,29 @@ namespace BeautySalon.Repositories
 
         public Promotion GetById(int id)
         {
-            throw new NotImplementedException();
+            Promotion promotion = _context.Promotion.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
+            if(promotion != null)
+                promotion.Images = promotion.Images.Where(x => x.IsDeleted == false).ToList();
+            return promotion;
         }
 
         public Promotion Update(Promotion model)
         {
-            throw new NotImplementedException();
+            Promotion original = _context.Promotion.FirstOrDefault(x => x.Id == model.Id && x.IsDeleted == false);
+            if (original == null)
+                return null;
+            model.Date = original.Date;
+
+            original.Images.ForEach(x => x.IsDeleted = true);
+            _context.SaveChanges();
+            model.Images.ForEach(x =>
+            {
+                original.Images.Add(new PromotionImage {Path = x.Path});
+            });
+            _context.SaveChanges();
+            _context.Entry(original).CurrentValues.SetValues(model);
+            _context.SaveChanges();
+            return original;
         }
 
         public void Delete(int id)

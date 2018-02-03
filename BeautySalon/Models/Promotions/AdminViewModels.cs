@@ -32,6 +32,17 @@ namespace BeautySalon.Models.Promotions
 
         [Display(Name = "Картинки")]
         public IList<PromotionImage> Images { get; set; }
+
+        public PromotionViewModel() { }
+        public PromotionViewModel(Promotion promotion)
+        {
+            Id = promotion.Id;
+            Title = promotion.Title;
+            Description = promotion.Description;
+            StartDate = promotion.StartDate;
+            EndDate = promotion.EndDate;
+            Images = promotion.Images.ToList();
+        }
     }
 
 
