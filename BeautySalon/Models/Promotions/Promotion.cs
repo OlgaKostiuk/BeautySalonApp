@@ -18,6 +18,11 @@ namespace BeautySalon.Models.Promotions
         
         public virtual bool IsDeleted { get; set; }
 
-        public virtual IList<PromotionImage> Images { get; set; }
+        public virtual ICollection<PromotionImage> Images { get; set; }
+
+        public Promotion()
+        {
+                Images = new HashSet<PromotionImage>();
+        }
     }
 }

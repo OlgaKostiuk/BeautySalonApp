@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using BeautySalon.Models;
 using BeautySalon.Models.Promotions;
@@ -23,12 +28,13 @@ namespace BeautySalon.Controllers
         // GET: Admin/Create
         public ActionResult CreatePromotion()
         {
-            return View();
+            ViewBag.Title = "Добавить новость";
+            return View(new PromotionViewModel());
         }
 
         // POST: Admin/Create
         [HttpPost]
-        public ActionResult CreatePromotion(CreatePromotionViewModel model)
+        public ActionResult CreatePromotion(PromotionViewModel model, IEnumerable<HttpPostedFileBase> pictures)
         {
             if (ModelState.IsValid)
             {
@@ -40,6 +46,17 @@ namespace BeautySalon.Controllers
                     StartDate = model.StartDate,
                     EndDate = model.EndDate
                 };
+                if (pictures.FirstOrDefault() != null)
+                {
+                    foreach (var image in pictures)
+                    {
+                        string uniqueName = Guid.NewGuid() + Path.GetExtension(image.FileName);
+                        string localPath = Path.Combine(Server.MapPath($"~{WebConfigurationManager.AppSettings["ImagesFolder"]}"), uniqueName);
+
+                        image.SaveAs(localPath);
+                        promotion.Images.Add(new PromotionImage { Path = uniqueName });
+                    }
+                }
                 UnitOfWork.Instance.PromotionRepository.Create(promotion);
                 return RedirectToAction("Index", "Home");
             }
@@ -47,14 +64,14 @@ namespace BeautySalon.Controllers
         }
 
         // GET: Admin/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditPromotion(int id)
         {
             return View();
         }
 
         // POST: Admin/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditPromotion(int id, FormCollection collection)
         {
             try
             {

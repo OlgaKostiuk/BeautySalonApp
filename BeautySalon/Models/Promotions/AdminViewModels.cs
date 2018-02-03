@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace BeautySalon.Models.Promotions
 {
-    public class CreatePromotionViewModel
+    public class PromotionViewModel
     {
         [Key]
         public int Id { get; set; }
@@ -20,13 +20,13 @@ namespace BeautySalon.Models.Promotions
         [Display(Name = "Полное описание")]
         public string Description { get; set; }
 
-        [Required]
         [Display(Name = "Начало действия акции:")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
         //[DataType(DataType.Date)]
         public DateTime? StartDate { get; set; }
 
-        [Required]
         [Display(Name = "Окончание действия акции:")]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd.MM.yyyy}")]
         //[DataType(DataType.Date)]
         public DateTime? EndDate { get; set; }
 

@@ -42,6 +42,7 @@ h4 {
     background: transparent;
     line-height: 1;
     outline: none;
+    margin: 10px;
 }
 
     .roundBtn:hover, .roundBtn:active {
@@ -678,3 +679,15 @@ div#ui-datepicker-div {
     font-family: initial;
     color: initial;
 }
+
+.picture {
+    height: 200px;
+    width: auto;
+    display: inline-block;
+    margin: 5px;
+}
+
+    .picture:hover {
+        cursor: pointer;
+        box-shadow: 2px 2px 2px black;
+    }

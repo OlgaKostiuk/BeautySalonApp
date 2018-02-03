@@ -1,65 +1,77 @@
-﻿@model BeautySalon.Models.Promotions.CreatePromotionViewModel
-
-@{
-    ViewBag.Title = "CreatePromotion";
-}
+﻿@model BeautySalon.Models.Promotions.PromotionViewModel
 
 <div class="col-sm-10 col-sm-offset-1">
-    <h2>CreatePromotion</h2>
-
-    @using (Html.BeginForm())
+    <h2>@ViewBag.Title</h2>
+    @{ var action = Model.Id == 0 ? "CreatePromotion" : "EditPromotion"; }
+    @using (Html.BeginForm(action, "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
-        @Html.AntiForgeryToken()
+    @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "customInput form-control" } })
-                    @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            @*<div class="form-group">
-                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "customInput form-control", rows = 6 } })
-                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                    </div>
-                </div>*@
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.TextAreaFor(model => model.Description, new { @class = "textarea-editor" })
-                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "customInput form-control date-picker" } })
-                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "customInput form-control date-picker" } })
-                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default roundBtn" />
-                </div>
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "customInput form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
             </div>
         </div>
+
+        @*<div class="form-group">
+        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "customInput form-control", rows = 6 } })
+        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+        </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Description, new { @class = "textarea-editor" })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "customInput form-control date-picker" } })
+                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "customInput form-control date-picker" } })
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control" type="file" id="pictures" name="pictures" accept="image/jpeg,image/png,image/gif" multiple="multiple" />
+                @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        
+        <div class="col-md-12 images" style="clear: both">
+            @if (Model.Images != null && Model.Images.Count != 0)
+            {
+                foreach (var img in Model.Images)
+                {
+                    <img class="img-thumbnail picture" src="@img.Path" />
+                }
+            }
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default roundBtn" />
+            </div>
+        </div>
+    </div>
     }
 
     <div>
@@ -67,9 +79,10 @@
     </div>
 </div>
 <script>
-    $(function() {
+    $(function () {
         // This will make every element with the class "date-picker" into a DatePicker element
         $('.date-picker').datepicker($.datepicker.regional["ru"]);
+        //$('.date-picker').datepicker();
     });
     $(document).ready(function () {
         // Initialize Editor
@@ -93,4 +106,25 @@
             ]
         });
     });
+
+    $("#pictures").on("change",
+        function () {
+            if ($(this)[0].files.length == 0) return;
+            $("div.images").html("");
+            let index = 0;
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("div.images").append(`<img class="img-thumbnail picture" src="${e.target.result}"/>`);
+            }
+
+            reader.onloadend = function () {
+                index++;
+                if (index >= $("#pictures")[0].files.length) return;
+
+                reader.readAsDataURL($("#pictures")[0].files[index]);
+            }
+
+            reader.readAsDataURL($(this)[0].files[index]);
+            return;
+        });
 </script>
