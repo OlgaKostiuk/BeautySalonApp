@@ -27,8 +27,6 @@ namespace BeautySalon.Repositories
         public Promotion GetById(int id)
         {
             Promotion promotion = _context.Promotion.FirstOrDefault(x => x.Id == id && x.IsDeleted == false);
-            if(promotion != null)
-                promotion.Images = promotion.Images.Where(x => x.IsDeleted == false).ToList();
             return promotion;
         }
 
@@ -39,14 +37,9 @@ namespace BeautySalon.Repositories
                 return null;
             model.Date = original.Date;
 
-            original.Images.ForEach(x => x.IsDeleted = true);
-            _context.SaveChanges();
-            model.Images.ForEach(x =>
-            {
-                original.Images.Add(new PromotionImage {Path = x.Path});
-            });
-            _context.SaveChanges();
             _context.Entry(original).CurrentValues.SetValues(model);
+            original.Images.ForEach(x => x.IsDeleted = true);
+            model.Images.ForEach(x => original.Images.Add(x));
             _context.SaveChanges();
             return original;
         }

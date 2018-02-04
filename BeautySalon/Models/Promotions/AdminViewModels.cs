@@ -41,7 +41,7 @@ namespace BeautySalon.Models.Promotions
             Description = promotion.Description;
             StartDate = promotion.StartDate;
             EndDate = promotion.EndDate;
-            Images = promotion.Images.ToList();
+            Images = promotion.Images.Where(x => !x.IsDeleted).ToList();
         }
     }
 
