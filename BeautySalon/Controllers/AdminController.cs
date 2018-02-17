@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using BeautySalon.Models;
 using BeautySalon.Models.Promotions;
@@ -23,42 +28,88 @@ namespace BeautySalon.Controllers
         // GET: Admin/Create
         public ActionResult CreatePromotion()
         {
-            return View();
+            ViewBag.Title = "Добавить новость";
+            return View(new PromotionViewModel());
         }
 
         // POST: Admin/Create
         [HttpPost]
-        public ActionResult CreatePromotion(CreatePromotionViewModel model)
+        public ActionResult CreatePromotion(PromotionViewModel model, IEnumerable<HttpPostedFileBase> pictures)
         {
             if (ModelState.IsValid)
             {
-                Promotion promotion = new Promotion {Title = model.Title, Description = model.Description, Date = DateTime.Today};
+                Promotion promotion = new Promotion
+                {
+                    Title = model.Title,
+                    Description = model.Description,
+                    Date = DateTime.Today,
+                    StartDate = model.StartDate,
+                    EndDate = model.EndDate
+                };
+                if (pictures.FirstOrDefault() != null)
+                {
+                    foreach (var image in pictures)
+                    {
+                        string uniqueName = Guid.NewGuid() + Path.GetExtension(image.FileName);
+                        string localPath = Path.Combine(Server.MapPath($"~{WebConfigurationManager.AppSettings["ImagesFolder"]}"), uniqueName);
+
+                        image.SaveAs(localPath);
+                        promotion.Images.Add(new PromotionImage { Path = uniqueName });
+                    }
+                }
                 UnitOfWork.Instance.PromotionRepository.Create(promotion);
+
+                //TODO: replace redirect to list of promotions or PromotionDetails
                 return RedirectToAction("Index", "Home");
             }
             return View(model);
         }
 
         // GET: Admin/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult EditPromotion(int id)
         {
-            return View();
+            Promotion promotion = UnitOfWork.Instance.PromotionRepository.GetById(id);
+            if (promotion == null)
+            {
+                ViewBag.Title = "Добавить новость";
+                return View("CreatePromotion", new PromotionViewModel());
+            }
+            ViewBag.Title = "Редактировать новость";
+            return View("CreatePromotion", new PromotionViewModel(promotion));
         }
 
         // POST: Admin/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult EditPromotion(PromotionViewModel model, IEnumerable<HttpPostedFileBase> pictures)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
+                Promotion promotion = new Promotion
+                {
+                    Id = model.Id,
+                    Title = model.Title,
+                    Description = model.Description,
+                    Date = DateTime.Today,
+                    StartDate = model.StartDate,
+                    EndDate = model.EndDate
+                };
+                if (pictures.FirstOrDefault() != null)
+                {
+                    foreach (var image in pictures)
+                    {
+                        string uniqueName = Guid.NewGuid() + Path.GetExtension(image.FileName);
+                        string localPath = Path.Combine(Server.MapPath($"~{WebConfigurationManager.AppSettings["ImagesFolder"]}"), uniqueName);
 
-                return RedirectToAction("Index");
+                        image.SaveAs(localPath);
+                        promotion.Images.Add(new PromotionImage { Path = uniqueName });
+                    }
+                }
+                UnitOfWork.Instance.PromotionRepository.Update(promotion);
+
+                //TODO: replace redirect to list of promotions or PromotionDetails
+                return RedirectToAction("Index", "Home");
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("EditPromotion", model.Id);
         }
 
         // GET: Admin/Delete/5

@@ -8,7 +8,6 @@
 * {
     font-size: 18pt;
     font-family: 'Cormorant Infant', serif;
-    font-style: italic;
 }
 
 h1 {
@@ -43,6 +42,7 @@ h4 {
     background: transparent;
     line-height: 1;
     outline: none;
+    margin: 10px;
 }
 
     .roundBtn:hover, .roundBtn:active {
@@ -222,7 +222,7 @@ h4 {
     top: 0;
     width: 100%;
     background-color: white;
-    z-index: 100;
+    z-index: 1000;
     right: 0;
     left: 0;
 }
@@ -654,12 +654,13 @@ footer {
         padding-right: 2px;
     }
 
-
-.authInput {
-    font-size: 18pt;
+.customInput {
+    font-size: 16pt;
+    font-family: sans-serif;
     color: #19204E;
     border: none;
     border-bottom: 2px solid #19204E;
+    -ms-border-radius: 40px;
     border-radius: 40px;
     padding: 10px;
     background-color: transparent;
@@ -667,3 +668,26 @@ footer {
     outline: none;
     height: auto;
 }
+
+div#ui-datepicker-div {
+    z-index: 501 !important;
+    width: initial;
+}
+
+.note-editor * {
+    font-size: initial;
+    font-family: initial;
+    color: initial;
+}
+
+.picture {
+    height: 200px;
+    width: auto;
+    display: inline-block;
+    margin: 5px;
+}
+
+    .picture:hover {
+        cursor: pointer;
+        box-shadow: 2px 2px 2px black;
+    }

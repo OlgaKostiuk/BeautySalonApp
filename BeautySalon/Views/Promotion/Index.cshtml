@@ -1,0 +1,38 @@
+﻿@model BeautySalon.Models.PageViewModel<BeautySalon.Models.Promotions.PromotionViewModel>
+
+
+    @Html.Partial("_PromotionList", Model.Data)
+    
+    <div class="container-fluid paginator">
+        <ul class="pagination">
+            @for (int i = 1; i <= Model.Count; i++)
+            {
+                <li><a class="page @(i == 1 ? "active" : "" )" data-id="@i" href="#">@i</a></li>
+            }
+        </ul>
+    </div>
+
+<script>
+    $(function() {
+        $(".page").click(function() {
+            if ($(this).hasClass("active")) return false;
+
+            $(".active").removeClass("active");
+            let page = $(this).attr("data-id");
+            $(this).addClass("active");
+
+            $.ajax({
+                type: "get",
+                url: '@Url.Action("GetPage")',
+                data: {
+                    CountPerPage: 5,
+                    PageNumber: page
+                },
+                success: function(response) {
+                    $("#page-content").html(response);
+                }
+            });
+            return false;
+        });
+    });
+</script>
