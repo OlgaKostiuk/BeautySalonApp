@@ -446,9 +446,10 @@ footer {
 }
 
 #currentPhotoContainer {
-    position: relative;
+    /*position: relative;
     display: inline-block;
-    margin: 40px;
+    margin: 40px;*/
+    display: inline-flex;
 }
 
 .imgControl:hover, .imgControl:focus {
@@ -456,7 +457,7 @@ footer {
 }
 
 .imgControl {
-    position: absolute;
+    /*position: absolute;*/
 }
 
     .imgControl span {
@@ -464,18 +465,20 @@ footer {
     }
 
 #closeImgBtn {
-    right: -40px;
-    top: -40px;
+    /*right: -40px;
+    top: -40px;*/
 }
 
 #prevImgBtn {
-    left: -40px;
-    top: 50%;
+    /*left: -40px;
+    top: 50%;*/
+    align-self: center;
 }
 
 #nextImgBtn {
-    right: -40px;
-    top: 50%;
+    /*right: -40px;
+    top: 50%;*/
+    align-self: center;
 }
 
 
