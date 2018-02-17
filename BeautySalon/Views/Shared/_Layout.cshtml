@@ -75,9 +75,15 @@
                                     <li class="@Html.ActiveLink(actions: "HairColoring", controllers: "Home")">
                                         <a href="@Url.Action("HairColoring", "Home")">Окрашивание</a>
                                     </li>
-                                    <li><a href="#">Процедуры для волос</a></li>
-                                    <li><a href="#">Визаж</a></li>
-                                    <li><a href="#">Ногтевой сервис</a></li>
+                                    <li class="@Html.ActiveLink(actions: "HairProcedures", controllers: "Home")">
+										<a href="@Url.Action("HairProcedures", "Home")">Процедуры для волос</a>
+									</li>
+                                    <li class="@Html.ActiveLink(actions: "MakeUp", controllers: "Home")">
+										<a href="@Url.Action("MakeUp", "Home")">Визаж</a>
+									</li>
+                                    <li class="@Html.ActiveLink(actions: "Nails", controllers: "Home")">
+										<a href="@Url.Action("Nails", "Home")">Ногтевой сервис</a>
+									</li>
                                     <li><a href="#">Косметологические услуги</a></li>
                                     <li><a href="#">Массаж</a></li>
                                     <li><a href="#">Мужской салон красоты</a></li>

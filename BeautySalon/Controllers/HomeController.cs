@@ -35,6 +35,21 @@ namespace BeautySalon.Controllers
             return View();
         }
 
+        public ActionResult HairProcedures()
+        {
+            return View();
+        }
+
+        public ActionResult MakeUp()
+        {
+            return View();
+        }
+
+        public ActionResult Nails()
+        {
+            return View();
+        }
+
         public ActionResult Gallery()
         {
             return View();

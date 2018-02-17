@@ -568,13 +568,15 @@ footer {
     background-color: #0F1025;
 }
 
-#haircutAndStylingBtnContainer, .ourWorks, #diagnosticContainer, #haircutTrends, #stylingTypes, #mainContacts {
-    text-align: center;
+#haircutAndStylingBtnContainer, .ourWorks, #diagnosticContainer, #haircutTrends, #stylingTypes, #mainContacts,
+#hairColoringTitleContainer, .hairColorTitle, #hairProceduresTitleContainer, .hairProcedTitle,
+#makeUpTitleContainer {
+	text-align: center;
 }
 
-.haircutItem, .pricesItem {
-    margin-top: 3%;
-    margin-bottom: 3%;
+.haircutItem, .pricesItem, .hairColorItem, .hairProcedItem, .makeUpItem {
+	margin-top: 3%;
+	margin-bottom: 3%;
 }
 
 #haircutTrends .col-sm-6 {
@@ -691,3 +693,13 @@ div#ui-datepicker-div {
         cursor: pointer;
         box-shadow: 2px 2px 2px black;
     }
+
+.hairColorArticle, .hairProcedArticle, .makeUpArticle {
+	text-indent: 1em;
+}
+
+.hairColorImages, .hairProcedImages, .makeUpImages {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
