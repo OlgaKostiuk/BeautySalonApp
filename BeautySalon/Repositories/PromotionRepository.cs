@@ -51,12 +51,9 @@ namespace BeautySalon.Repositories
 
         public PageViewModel<Promotion> GetPage(int page, int size = 5)
         {
-            List<Promotion> data = _context.Promotion.OrderByDescending(x => x.Date)
-                .Where(x => !x.IsDeleted)
-                .Skip((page - 1) * size)
-                .Take(size)
-                .ToList();
-            int count = data.Count % size == 0 ? data.Count / size : data.Count / size + 1;
+            var allData = _context.Promotion.OrderByDescending(x => x.Date).Where(x => !x.IsDeleted);
+            List<Promotion> data = allData.Skip((page - 1) * size).Take(size).ToList();
+            int count = allData.Count() % size == 0 ? allData.Count() / size : allData.Count() / size + 1;
             return new PageViewModel<Promotion>()
             {
                 Data = data,

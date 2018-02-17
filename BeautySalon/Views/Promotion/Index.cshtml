@@ -1,18 +1,36 @@
-﻿@model BeautySalon.Models.PageViewModel<BeautySalon.Models.Promotions.PromotionViewModel>
+﻿@using BeautySalon.Models
+@model BeautySalon.Models.PageViewModel<BeautySalon.Models.Promotions.PromotionViewModel>
 
+@{
+    ViewBag.Title = "Акции и новости";
+}
 
-    @Html.Partial("_PromotionList", Model.Data)
-    
-    <div class="container-fluid paginator">
-        <ul class="pagination">
-            @for (int i = 1; i <= Model.Count; i++)
-            {
-                <li><a class="page @(i == 1 ? "active" : "" )" data-id="@i" href="#">@i</a></li>
-            }
-        </ul>
+@if (Request.IsAuthenticated && User.IsInRole(RoleTypes.Admin))
+{
+    <div class="container text-center">
+        <button class="btn btn-success btn-lg create">Добавить новую запись</button>
     </div>
+}
+
+@Html.Partial("_PromotionList", Model.Data)
+
+<div class="container-fluid paginator text-center">
+    <ul class="pagination">
+        @for (int i = 1; i <= Model.Count; i++)
+            {
+            <li class="@(i == 1 ? "active" : "")"><a class="page @(i == 1 ? "active" : "")" data-id="@i" href="#">@i</a></li>
+        }
+    </ul>
+</div>
 
 <script>
+    $(function () {
+        $(".create").click(function () {
+            location.href = '@Url.Action("CreatePromotion", "Admin")';
+        });
+    });
+
+
     $(function() {
         $(".page").click(function() {
             if ($(this).hasClass("active")) return false;
@@ -20,6 +38,7 @@
             $(".active").removeClass("active");
             let page = $(this).attr("data-id");
             $(this).addClass("active");
+            this.parentNode.classList.add("active");
 
             $.ajax({
                 type: "get",
@@ -30,6 +49,7 @@
                 },
                 success: function(response) {
                     $("#page-content").html(response);
+                    window.scrollTo(0, 0);
                 }
             });
             return false;

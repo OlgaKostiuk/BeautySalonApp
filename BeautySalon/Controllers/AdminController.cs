@@ -42,7 +42,7 @@ namespace BeautySalon.Controllers
                 {
                     Title = model.Title,
                     Description = model.Description,
-                    Date = DateTime.Today,
+                    Date = DateTime.Now,
                     StartDate = model.StartDate,
                     EndDate = model.EndDate
                 };
