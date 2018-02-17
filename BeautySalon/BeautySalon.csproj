@@ -237,6 +237,7 @@
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\ICrud.cs" />
     <Compile Include="Repositories\PromotionRepository.cs" />
+    <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
