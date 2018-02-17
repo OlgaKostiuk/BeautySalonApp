@@ -14,7 +14,7 @@
                 var identity = (ClaimsPrincipal)Thread.CurrentPrincipal;
                 string name = identity.Claims.Where(c => c.Type == ClaimTypes.Name).Select(c => c.Value).Last();
             }
-            @Html.ActionLink("Hello " + name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})
+            @Html.ActionLink("Привет, " + name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new {title = "Manage"})
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
     </ul>
