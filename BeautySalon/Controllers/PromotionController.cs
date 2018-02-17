@@ -13,11 +13,11 @@ namespace BeautySalon.Controllers
         // GET: Promotion
         public ActionResult Index()
         {
-            List<PromotionViewModel> pageData = UnitOfWork.Instance.PromotionRepository.GetPage(1).Data
-                .Select(x => new PromotionViewModel(x)).ToList();
+            PageViewModel<Promotion> pageData = UnitOfWork.Instance.PromotionRepository.GetPage(1);
+            List<PromotionViewModel> viewData = pageData.Data.Select(x => new PromotionViewModel(x)).ToList();
             PageViewModel<PromotionViewModel> page = new PageViewModel<PromotionViewModel>()
             {
-                Data = pageData,
+                Data = viewData,
                 Count = pageData.Count
             };
             return View(page);
