@@ -48,5 +48,20 @@ namespace BeautySalon.Repositories
         {
             throw new NotImplementedException();
         }
+
+        public PageViewModel<Promotion> GetPage(int page, int size = 5)
+        {
+            List<Promotion> data = _context.Promotion.OrderByDescending(x => x.Date)
+                .Where(x => !x.IsDeleted)
+                .Skip((page - 1) * size)
+                .Take(size)
+                .ToList();
+            int count = data.Count % size == 0 ? data.Count / size : data.Count / size + 1;
+            return new PageViewModel<Promotion>()
+            {
+                Data = data,
+                Count = count
+            };
+        }
     }
 }

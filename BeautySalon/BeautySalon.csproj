@@ -193,6 +193,7 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PromotionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -219,7 +220,9 @@
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Promotions\AdminViewModels.cs" />
+    <Compile Include="Models\PageRequestModel.cs" />
+    <Compile Include="Models\PageViewModel.cs" />
+    <Compile Include="Models\Promotions\PromotionViewModel.cs" />
     <Compile Include="Models\Promotions\Promotion.cs" />
     <Compile Include="Models\Promotions\PromotionImage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -442,6 +445,8 @@
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
     <Content Include="Views\Admin\CreatePromotion.cshtml" />
+    <Content Include="Views\Promotion\_PromotionList.cshtml" />
+    <Content Include="Views\Promotion\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

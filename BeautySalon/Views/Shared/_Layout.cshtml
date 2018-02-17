@@ -88,7 +88,10 @@
                             <li class="@Html.ActiveLink(actions: "Gallery", controllers: "Home")">
                                 <a href="@Url.Action("Gallery", "Home")">Фотографии</a>
                             </li>
-                            <li><a href="#">Акции и новости</a></li>
+                            @*<li><a href="#">Акции и новости</a></li>*@
+                            <li class="@Html.ActiveLink(actions: "Index", controllers: "Promotion")">
+                                <a href="@Url.Action("Index", "Promotion")">Акции и новости</a>
+                            </li>
                             <li><a href="#">Дисконтная программа</a></li>
                             @*<li><a href="#">Контакты</a></li>*@
                             <li class="@Html.ActiveLink(actions: "Contacts", controllers: "Home")">
