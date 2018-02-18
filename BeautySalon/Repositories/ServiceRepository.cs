@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using BeautySalon.Models;
 using BeautySalon.Models.Services;
+using Microsoft.Build.Framework.XamlTypes;
 
 namespace BeautySalon.Repositories
 {
@@ -37,15 +38,26 @@ namespace BeautySalon.Repositories
         public void Init()
         {
             _context.ServiceCategories.AddRange(new[] {
-                new ServiceCategory { Title = "Стрижка и укладка" },
-                new ServiceCategory { Title = "Окрашивание" },
-                new ServiceCategory { Title = "Процедуры для волос" },
-                new ServiceCategory { Title = "Визаж" },
-                new ServiceCategory { Title = "Ногтевой сервис" },
-                new ServiceCategory { Title = "Косметологические услуги" },
-                new ServiceCategory { Title = "Массаж" },
-                new ServiceCategory { Title = "Мужской салон красоты" }
+                new ServiceCategory { Title = "Стрижка и укладка", GenderAffiliation = GenderAffiliation.ForWomen },
+                new ServiceCategory { Title = "Окрашивание", GenderAffiliation = GenderAffiliation.ForWomen },
+                new ServiceCategory { Title = "Процедуры для волос", GenderAffiliation = GenderAffiliation.ForWomen },
+                new ServiceCategory { Title = "Визаж", GenderAffiliation = GenderAffiliation.ForWomen },
+                new ServiceCategory { Title = "Ногтевой сервис", GenderAffiliation = GenderAffiliation.ForWomen },
+                new ServiceCategory { Title = "Косметологические услуги", GenderAffiliation = GenderAffiliation.ForWomen },
+                new ServiceCategory { Title = "Массаж", GenderAffiliation = GenderAffiliation.ForWomen },
+
+                new ServiceCategory { Title = "Парикмахерские услуги", GenderAffiliation = GenderAffiliation.ForMen },
+                new ServiceCategory { Title = "Окрашивание", GenderAffiliation = GenderAffiliation.ForMen },
+                new ServiceCategory { Title = "Ногтевой сервис", GenderAffiliation = GenderAffiliation.ForMen },
+                new ServiceCategory { Title = "Косметологические услуги", GenderAffiliation = GenderAffiliation.ForMen },
+                new ServiceCategory { Title = "Массаж", GenderAffiliation = GenderAffiliation.ForMen }
             });
+            _context.SaveChanges();
+        }
+
+        public List<ServiceCategory> GetAll()
+        {
+            return _context.ServiceCategories.ToList();
         }
     }
 }

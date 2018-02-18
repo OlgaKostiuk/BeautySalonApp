@@ -1,0 +1,128 @@
+﻿@using BeautySalon.Models.Services
+@model List<BeautySalon.Models.Services.ServiceViewModel>
+
+<script src="@Url.Content("~/Scripts/PricesScript.js")"></script>
+
+@{
+    var forWomen = Model.Where(x => x.Category.GenderAffiliation == GenderAffiliation.ForWomen);
+    var forMen = Model.Where(x => x.Category.GenderAffiliation == GenderAffiliation.ForMen);
+}
+
+<main class="container-fluid">
+    <div class="row">
+        <div id="pricesBtnContainer" class="col-sm-10 col-sm-offset-1">
+            <h2 class="pricesItem">
+                ЦЕНЫ НА УСЛУГИ
+            </h2>
+            <div class="btn-group pricesItem">
+                <button id="womenPricesToggleBtn" type="button" class="btn roundBtn leftBtnInGroup">ДЛЯ ЖЕНЩИН</button>
+                <button id="menPricesToggleBtn" type="button" class="btn roundBtn rightBtnInGroup">ДЛЯ МУЖЧИН</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="womenPricesMenuContainer" class="row pricesItem pricesMenuContainer">
+        <div class="row topPricesMenu">
+            <ul class="nav nav-pills col-sm-10 col-sm-offset-1">
+                @foreach (var item in forWomen)
+                {
+                    <li class="@(forWomen.FirstOrDefault() == item ? "active" : null)">
+                        <a data-toggle="pill" href="#womenMenu@(item.Category.Id)">
+                            <span>@item.Category.Title</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="tab-content col-sm-10 col-sm-offset-1">
+            @foreach (var item in forWomen)
+            {
+                <div id="womenMenu@(item.Category.Id)" class="tab-pane fade @(forWomen.FirstOrDefault() == item ? "in active" : null)">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Услуга</th>
+                            <th>Цена</th>
+                        </tr>
+                        </thead>
+
+                        @foreach (var service in item.Services)
+                        {
+                            <tbody data-id="@(service.Id)" class="serviceRow">
+                            <tr>
+                                <td>@service.Title</td>
+                                <td>от @service.Price грн</td>
+                            </tr>
+                            </tbody>
+                            <tbody style="display: none" data-id="@(service.Id)" class="serviceSubtypeRows">
+                            @foreach (var serviceSubtype in service.Subtypes)
+                            {
+                                <tr class="text-center">
+                                    <td>@serviceSubtype.Title</td>
+                                    <td>@serviceSubtype.Price</td>
+                                </tr>
+                            }
+                            </tbody>
+                        }
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div id="menPricesMenuContainer" class="row pricesItem pricesMenuContainer">
+        <div class="row topPricesMenu">
+            <ul class="nav nav-pills col-sm-10 col-sm-offset-1">
+                @foreach (var item in forMen)
+                {
+                    <li class="@(forMen.FirstOrDefault() == item ? "active" : null)">
+                        <a data-toggle="pill" href="#menMenu@(item.Category.Id)">
+                            <span>@item.Category.Title</span>
+                        </a>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="tab-content col-sm-10 col-sm-offset-1">
+            @foreach (var item in forMen)
+            {
+                <div id="menMenu@(item.Category.Id)" class="tab-pane fade @(forMen.FirstOrDefault() == item ? "in active" : null)">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Услуга</th>
+                                <th>Цена</th>
+                            </tr>
+                        </thead>
+                        @foreach (var service in item.Services)
+                        {
+                            <tbody data-id="@(service.Id)" class="serviceRow">
+                                <tr>
+                                    <td>@service.Title</td>
+                                    <td>от @service.Price грн</td>
+                                </tr>
+                            </tbody>
+                            <tbody style="display: none" data-id="@(service.Id)" class="serviceSubtypeRows">
+                                @foreach (var serviceSubtype in service.Subtypes)
+                                {
+                                    <tr class="text-center">
+                                        <td>@serviceSubtype.Title</td>
+                                        <td>@serviceSubtype.Price</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        }
+                    </table>
+                </div>
+            }
+        </div>
+    </div>
+</main>
+<script>
+    $(document).ready(function(){
+        $(".serviceRow").click(function () {
+            $($(".serviceSubtypeRows[data-id!='" + $(this).attr('data-id') + "']")).hide();
+            $($(".serviceSubtypeRows[data-id='" + $(this).attr('data-id') + "']")).show(1000);
+        });
+    });
+</script>

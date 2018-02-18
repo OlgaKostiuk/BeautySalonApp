@@ -8,7 +8,7 @@ namespace BeautySalon.Models.Services
 
         public string Title { get; set; }
 
-        public string Description { get; set; }
+        public string GenderAffiliation { get; set; }
 
         public virtual ICollection<Service> Services { get; set; }
 
@@ -16,5 +16,11 @@ namespace BeautySalon.Models.Services
         {
             Services = new HashSet<Service>();
         }
+    }
+
+    public static class GenderAffiliation
+    {
+        public const string ForMen = "для мужчин";
+        public const string ForWomen = "для женщин";
     }
 }

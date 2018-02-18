@@ -89,7 +89,10 @@
                                     <li><a href="#">Мужской салон красоты</a></li>
                                 </ul>
                             </li>
-                            <li><a href="Prices.html">Цены</a></li>
+                            @*<li><a href="Prices.html">Цены</a></li>*@
+                            <li class="@Html.ActiveLink(actions: "Index", controllers: "Service")">
+                                <a href="@Url.Action("Index", "Service")">Цены</a>
+                            </li>
                             @*<li><a href="#">Фотографии</a></li>*@
                             <li class="@Html.ActiveLink(actions: "Gallery", controllers: "Home")">
                                 <a href="@Url.Action("Gallery", "Home")">Фотографии</a>

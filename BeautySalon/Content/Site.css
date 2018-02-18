@@ -567,7 +567,8 @@ footer {
     }
 
 #faceShape, .pricesMenuContainer {
-    background-color: #0F1025;
+    /*background-color: #0F1025;*/
+    background-color: #122242;
 }
 
 #haircutAndStylingBtnContainer, .ourWorks, #diagnosticContainer, #haircutTrends, #stylingTypes, #mainContacts,
