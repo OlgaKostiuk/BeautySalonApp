@@ -50,6 +50,20 @@ namespace BeautySalon.Controllers
             return View();
         }
 
+        public ActionResult Cosmetology()
+        {
+            return View();
+        }
+
+        public ActionResult Massage()
+        {
+            return View();
+        }
+        public ActionResult ManSalon()
+        {
+            return View();
+        }
+
         public ActionResult Gallery()
         {
             return View();
