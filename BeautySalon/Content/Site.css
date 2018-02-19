@@ -714,21 +714,4 @@ div#ui-datepicker-div {
 .promotionDescription.collapsed {
     max-height: 300px;
     overflow-y: hidden;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.imgNails {
-	align-self: stretch;
-}
-
-.promotionDescription * {
-    font-size: initial;
-    font-family: initial;
-}
-
-.promotionDescription.collapsed{
-    max-height: 300px;
-    overflow-y: hidden;
 }
