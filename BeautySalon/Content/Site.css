@@ -45,14 +45,14 @@ h4 {
     margin: 10px;
 }
 
-    .roundBtn:hover, .roundBtn:active {
-        background: linear-gradient(to right, white, #C5DCE2);
-    }
+.roundBtn:hover, .roundBtn:active {
+    background: linear-gradient(to right, white, #C5DCE2);
+}
 
-    .roundBtn.isSelected {
-        background: linear-gradient(to right, #9A013A, #19204E);
-        color: white;
-    }
+.roundBtn.isSelected {
+    background: linear-gradient(to right, #9A013A, #19204E);
+    color: white;
+}
 
 #topRowHeader {
     padding: 10px;
@@ -62,11 +62,11 @@ h4 {
     text-shadow: 0px 1px 1px #19204E;
 }
 
-    #topRowHeader a, #phoneInHeader2 a, .contactPhone a {
-        color: #19204E;
-        text-shadow: 0px 1px 1px #19204E;
-        text-decoration: none;
-    }
+#topRowHeader a, #phoneInHeader2 a, .contactPhone a {
+    color: #19204E;
+    text-shadow: 0px 1px 1px #19204E;
+    text-decoration: none;
+}
 
 #phoneInHeader, #phoneInHeader2 {
     margin: 100px auto 15px auto;
@@ -74,26 +74,26 @@ h4 {
     line-height: 0.5;
 }
 
-    #phoneInHeader > h2, #phoneInHeader2 > h2 {
-        color: #9A013A;
-        text-shadow: 0px 1px 1px #19204E;
-        font-weight: 700;
-        font-size: 30px;
-    }
+#phoneInHeader > h2, #phoneInHeader2 > h2 {
+    color: #9A013A;
+    text-shadow: 0px 1px 1px #19204E;
+    font-weight: 700;
+    font-size: 30px;
+}
 
-    #phoneInHeader > a span, #phoneInHeader2 > a span, .contactPhone > a span {
-        border-bottom: 2px solid #19204E;
-        cursor: pointer;
-    }
+#phoneInHeader > a span, #phoneInHeader2 > a span, .contactPhone > a span {
+    border-bottom: 2px solid #19204E;
+    cursor: pointer;
+}
 
 #pictureInHeader {
     text-align: right;
 }
 
-    #pictureInHeader > img {
-        display: inline;
-        max-height: 180px;
-    }
+#pictureInHeader > img {
+    display: inline;
+    max-height: 180px;
+}
 
 #titleInHeader h1 {
     color: #9A013A;
@@ -150,19 +150,19 @@ h4 {
         padding: 10px 0 10px 0;
     }
 
-        #secondRowHeader .icon-bar {
-            background-color: #19204E;
-            height: 2px;
-            min-width: 40px;
-            margin: 5px;
-        }
+    #secondRowHeader .icon-bar {
+        background-color: #19204E;
+        height: 2px;
+        min-width: 40px;
+        margin: 5px;
+    }
 
-        #secondRowHeader button {
-            padding: 5px;
-            display: block;
-            margin: auto auto auto auto;
-            float: none;
-        }
+    #secondRowHeader button {
+        padding: 5px;
+        display: block;
+        margin: auto auto auto auto;
+        float: none;
+    }
 }
 
 @media (max-width: 474px) {
@@ -190,20 +190,20 @@ h4 {
     text-align: center;
 }
 
-    #menuInHeader a {
-        color: #19204E;
-        text-shadow: 0px 1px 1px #19204E;
-    }
+#menuInHeader a {
+    color: #19204E;
+    text-shadow: 0px 1px 1px #19204E;
+}
 
-    #menuInHeader li.active > a {
-        color: #9A013A;
-        border-bottom: 2px solid #9A013A;
-        background-color: white;
-    }
+#menuInHeader li.active > a {
+    color: #9A013A;
+    border-bottom: 2px solid #9A013A;
+    background-color: white;
+}
 
-        #menuInHeader li.active > a > span {
-            background-color: #9A013A;
-        }
+#menuInHeader li.active > a > span {
+    background-color: #9A013A;
+}
 
 @media (min-width: 768px) {
     .navbar-nav {
@@ -255,9 +255,9 @@ h4 {
     border: 1px solid #9A013A;
 }
 
-    #carouselHome li.active {
-        background-color: #9A013A;
-    }
+#carouselHome li.active {
+    background-color: #9A013A;
+}
 
 #carouselHome .carousel-caption {
     top: 20%;
@@ -268,11 +268,11 @@ h4 {
     clear: both;
 }
 
-    #servicesHomeWrapper h3 {
-        text-align: center;
-        color: #9A013A;
-        font-weight: 700;
-    }
+#servicesHomeWrapper h3 {
+    text-align: center;
+    color: #9A013A;
+    font-weight: 700;
+}
 
 @media (min-width: 768px) {
     #servicesHomeWrapper .row {
@@ -287,24 +287,24 @@ h4 {
     background-repeat: no-repeat, no-repeat;
 }
 
-    .homeServices p {
-        font-size: 22px;
-        line-height: 28px;
-        width: 40%;
-        margin-left: 50%;
-        margin-right: 10%;
-        text-align: center;
-        padding-bottom: 80px;
-    }
+.homeServices p {
+    font-size: 22px;
+    line-height: 28px;
+    width: 40%;
+    margin-left: 50%;
+    margin-right: 10%;
+    text-align: center;
+    padding-bottom: 80px;
+}
 
-    .homeServices h4 {
-        line-height: 32px;
-        width: 40%;
-        margin-left: 50%;
-        margin-right: 10%;
-        text-align: center;
-        margin-top: 20px;
-    }
+.homeServices h4 {
+    line-height: 32px;
+    width: 40%;
+    margin-left: 50%;
+    margin-right: 10%;
+    text-align: center;
+    margin-top: 20px;
+}
 
 #firstHomeService {
     background-color: #E6F1F7;
@@ -318,10 +318,10 @@ h4 {
     background-position: right center, left top;
 }
 
-    #secondHomeService p, #secondHomeService h4, #fourthHomeService p, #fourthHomeService h4 {
-        margin-left: 10%;
-        margin-right: 50%;
-    }
+#secondHomeService p, #secondHomeService h4, #fourthHomeService p, #fourthHomeService h4 {
+    margin-left: 10%;
+    margin-right: 50%;
+}
 
 #thirdHomeService {
     background-color: #E4E1D8;
@@ -369,20 +369,20 @@ footer {
     display: inline-block;
 }
 
-    #titleInFooter a {
-        text-decoration: none;
-        line-height: 1;
-    }
+#titleInFooter a {
+    text-decoration: none;
+    line-height: 1;
+}
 
-    #titleInFooter h3 {
-        font-size: 40pt;
-        color: #9A013A;
-        text-shadow: 1px 1px 1px #7B2F94;
-    }
+#titleInFooter h3 {
+    font-size: 40pt;
+    color: #9A013A;
+    text-shadow: 1px 1px 1px #7B2F94;
+}
 
-    #titleInFooter p {
-        color: #19204E;
-    }
+#titleInFooter p {
+    color: #19204E;
+}
 
 #signUpInFooter {
     margin-top: 40px;
@@ -454,9 +454,9 @@ footer {
     /*position: absolute;*/
 }
 
-    .imgControl span {
-        font-size: 40px;
-    }
+.imgControl span {
+    font-size: 40px;
+}
 
 #closeImgBtn {
     /*right: -40px;
@@ -497,10 +497,10 @@ footer {
     background-color: white;
 }
 
-    #topNav ul, .topPricesMenu ul {
-        display: flex;
-        flex-wrap: wrap;
-    }
+#topNav ul, .topPricesMenu ul {
+    display: flex;
+    flex-wrap: wrap;
+}
 
 .nav-pills > li {
     text-align: center;
@@ -509,25 +509,25 @@ footer {
     width: 200px;
 }
 
-    .nav-pills > li > a {
-        height: 100%;
-    }
+.nav-pills > li > a {
+    height: 100%;
+}
 
-    .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-        color: #9A013A;
-        /*background-color: white;*/
-        background: linear-gradient(to bottom, #C5DCE2, white);
-    }
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #9A013A;
+    /*background-color: white;*/
+    background: linear-gradient(to bottom, #C5DCE2, white);
+}
 
-        .nav-pills > li.active > a::after {
-            content: "";
-            border: 15px solid transparent;
-            border-top: 15px solid #fff;
-            position: absolute;
-            bottom: -14%;
-            left: 44%;
-            z-index: 100;
-        }
+.nav-pills > li.active > a::after {
+    content: "";
+    border: 15px solid transparent;
+    border-top: 15px solid #fff;
+    position: absolute;
+    bottom: -14%;
+    left: 44%;
+    z-index: 100;
+}
 
 ::after, ::before {
     -webkit-box-sizing: border-box;
@@ -581,22 +581,22 @@ footer {
     padding-left: 0;
 }
 
-    #haircutTrends .col-sm-6 > img.leftPhoto {
-        float: right;
-    }
+#haircutTrends .col-sm-6 > img.leftPhoto {
+    float: right;
+}
 
-    #haircutTrends .col-sm-6 > img.rightPhoto {
-        float: left;
-    }
+#haircutTrends .col-sm-6 > img.rightPhoto {
+    float: left;
+}
 
 .styling {
     padding: 0;
 }
 
-    .styling span {
-        display: inline-block;
-        position: relative;
-    }
+.styling span {
+    display: inline-block;
+    position: relative;
+}
 
 .layer {
     transition: background-color 0.5s ease;
@@ -608,9 +608,9 @@ footer {
     left: 0;
 }
 
-    .layer:hover {
-        background-color: transparent;
-    }
+.layer:hover {
+    background-color: transparent;
+}
 
 .styling button {
     position: absolute;
@@ -646,11 +646,11 @@ footer {
     width: auto;
 }
 
-    .topPricesMenu .nav-pills > li span, .topPricesMenu .nav-pills > li a {
-        font-size: 16pt;
-        padding-left: 2px;
-        padding-right: 2px;
-    }
+.topPricesMenu .nav-pills > li span, .topPricesMenu .nav-pills > li a {
+    font-size: 16pt;
+    padding-left: 2px;
+    padding-right: 2px;
+}
 
 .customInput {
     font-size: 16pt;
@@ -685,14 +685,14 @@ div#ui-datepicker-div {
     margin: 5px;
 }
 
-    .picture:hover {
-        cursor: pointer;
-        box-shadow: 2px 2px 2px black;
-    }
+.picture:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 2px black;
+}
 
 .hairColorArticle, .hairProcedArticle, .makeUpArticle, .nailsArticle, .cosmetArticle, .massageArticle,
 .manSalonArticle {
-    text-indent: 1em;
+	text-indent: 1em;
 }
 
 .hairColorImages, .hairProcedImages, .makeUpImages, .nailsImages, .cosmetImages, .massageImages,
@@ -714,4 +714,11 @@ div#ui-datepicker-div {
 .promotionDescription.collapsed {
     max-height: 300px;
     overflow-y: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.imgNails {
+	align-self: stretch;
 }

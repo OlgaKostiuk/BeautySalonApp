@@ -84,9 +84,15 @@
                                     <li class="@Html.ActiveLink(actions: "Nails", controllers: "Home")">
 										<a href="@Url.Action("Nails", "Home")">Ногтевой сервис</a>
 									</li>
-                                    <li><a href="#">Косметологические услуги</a></li>
-                                    <li><a href="#">Массаж</a></li>
-                                    <li><a href="#">Мужской салон красоты</a></li>
+                                    <li class="@Html.ActiveLink(actions: "Cosmetology", controllers: "Home")">
+										<a href="@Url.Action("Cosmetology", "Home")">Косметологические услуги</a>
+									</li>
+                                    <li class="@Html.ActiveLink(actions: "Massage", controllers: "Home")">
+										<a href="@Url.Action("Massage", "Home")">Массаж</a>
+									</li>
+                                    <li class="@Html.ActiveLink(actions: "ManSalon", controllers: "Home")">
+										<a href="@Url.Action("ManSalon", "Home")">Мужской салон красоты</a>
+									</li>
                                 </ul>
                             </li>
                             <li><a href="Prices.html">Цены</a></li>
