@@ -474,6 +474,9 @@
     <Content Include="Views\Home\HairProcedures.cshtml" />
     <Content Include="Views\Home\Nails.cshtml" />
     <Content Include="Views\Home\MakeUp.cshtml" />
+    <Content Include="Views\Home\Cosmetology.cshtml" />
+    <Content Include="Views\Home\ManSalon.cshtml" />
+    <Content Include="Views\Home\Massage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
