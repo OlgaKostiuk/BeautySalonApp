@@ -54,7 +54,6 @@ h4 {
         color: white;
     }
 
-
 #topRowHeader {
     padding: 10px;
     border-bottom: 2px #19204E ridge;
@@ -183,7 +182,6 @@ h4 {
     border-radius: 0;
 }
 
-
 #secondRowHeader {
     margin-top: 20px;
 }
@@ -227,7 +225,6 @@ h4 {
     left: 0;
 }
 
-
 #BookService input, #BookService select, #Callback input {
     font-size: 14pt;
     text-shadow: none;
@@ -236,11 +233,9 @@ h4 {
     font-weight: 700;
 }
 
-
 #mainHome {
     padding: 0;
 }
-
 
 #carouselHomeWrapper {
     padding: 0;
@@ -268,7 +263,6 @@ h4 {
     top: 20%;
     font-size: 20pt;
 }
-
 
 #servicesHomeWrapper {
     clear: both;
@@ -446,9 +440,10 @@ footer {
 }
 
 #currentPhotoContainer {
-    position: relative;
+    /*position: relative;
     display: inline-block;
-    margin: 40px;
+    margin: 40px;*/
+    display: inline-flex;
 }
 
 .imgControl:hover, .imgControl:focus {
@@ -456,7 +451,7 @@ footer {
 }
 
 .imgControl {
-    position: absolute;
+    /*position: absolute;*/
 }
 
     .imgControl span {
@@ -464,20 +459,21 @@ footer {
     }
 
 #closeImgBtn {
-    right: -40px;
-    top: -40px;
+    /*right: -40px;
+    top: -40px;*/
 }
 
 #prevImgBtn {
-    left: -40px;
-    top: 50%;
+    /*left: -40px;
+    top: 50%;*/
+    align-self: center;
 }
 
 #nextImgBtn {
-    right: -40px;
-    top: 50%;
+    /*right: -40px;
+    top: 50%;*/
+    align-self: center;
 }
-
 
 .btn:active:focus, .btn:active, .btn:hover, .btn:focus {
     outline-color: transparent;
@@ -570,13 +566,15 @@ footer {
 
 #haircutAndStylingBtnContainer, .ourWorks, #diagnosticContainer, #haircutTrends, #stylingTypes, #mainContacts,
 #hairColoringTitleContainer, .hairColorTitle, #hairProceduresTitleContainer, .hairProcedTitle,
-#makeUpTitleContainer {
-	text-align: center;
+#makeUpTitleContainer, .makeUpTitle, #nailsTitleContainer, .nailsTitle, #cosmetTitleContainer,
+.cosmetTitle, #massageTitleContainer, .massageTitle, #manSalonTitleContainer, .manSalonTitle {
+    text-align: center;
 }
 
-.haircutItem, .pricesItem, .hairColorItem, .hairProcedItem, .makeUpItem {
-	margin-top: 3%;
-	margin-bottom: 3%;
+.haircutItem, .pricesItem, .hairColorItem, .hairProcedItem, .makeUpItem, .nailsItem,
+.cosmetItem, .massageItem, .manSalonItem {
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
 
 #haircutTrends .col-sm-6 {
@@ -590,7 +588,6 @@ footer {
     #haircutTrends .col-sm-6 > img.rightPhoto {
         float: left;
     }
-
 
 .styling {
     padding: 0;
@@ -635,7 +632,6 @@ footer {
 .topStylingBtn {
     top: 5%;
 }
-
 
 #pricesBtnContainer {
     text-align: center;
@@ -694,12 +690,28 @@ div#ui-datepicker-div {
         box-shadow: 2px 2px 2px black;
     }
 
-.hairColorArticle, .hairProcedArticle, .makeUpArticle {
-	text-indent: 1em;
+.hairColorArticle, .hairProcedArticle, .makeUpArticle, .nailsArticle, .cosmetArticle, .massageArticle,
+.manSalonArticle {
+    text-indent: 1em;
 }
 
-.hairColorImages, .hairProcedImages, .makeUpImages {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+.hairColorImages, .hairProcedImages, .makeUpImages, .nailsImages, .cosmetImages, .massageImages,
+.manSalonImages {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgNails {
+    align-self: stretch;
+}
+
+.promotionDescription * {
+    font-size: initial;
+    font-family: initial;
+}
+
+.promotionDescription.collapsed {
+    max-height: 300px;
+    overflow-y: hidden;
 }

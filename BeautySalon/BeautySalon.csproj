@@ -447,6 +447,9 @@
     <Content Include="Views\Admin\CreatePromotion.cshtml" />
     <Content Include="Views\Promotion\_PromotionList.cshtml" />
     <Content Include="Views\Promotion\Index.cshtml" />
+    <Content Include="Views\Home\HairProcedures.cshtml" />
+    <Content Include="Views\Home\MakeUp.cshtml" />
+    <Content Include="Views\Home\Nails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
