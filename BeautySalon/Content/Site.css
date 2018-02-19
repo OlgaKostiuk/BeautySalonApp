@@ -42,7 +42,6 @@ h4 {
     background: transparent;
     line-height: 1;
     outline: none;
-    margin: 10px;
 }
 
 .roundBtn:hover, .roundBtn:active {
@@ -561,7 +560,8 @@ footer {
     }
 
 #faceShape, .pricesMenuContainer {
-    background-color: #0F1025;
+    /*background-color: #0F1025;*/
+    background-color: #122242;
 }
 
 #haircutAndStylingBtnContainer, .ourWorks, #diagnosticContainer, #haircutTrends, #stylingTypes, #mainContacts,
@@ -721,4 +721,14 @@ div#ui-datepicker-div {
 
 .imgNails {
 	align-self: stretch;
+}
+
+.promotionDescription * {
+    font-size: initial;
+    font-family: initial;
+}
+
+.promotionDescription.collapsed{
+    max-height: 300px;
+    overflow-y: hidden;
 }
