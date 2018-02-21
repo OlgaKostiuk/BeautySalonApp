@@ -68,5 +68,10 @@ namespace BeautySalon.Controllers
         {
             return View();
         }
+
+        public ActionResult OurTeam()
+        {
+            return View();
+        }
     }
 }
