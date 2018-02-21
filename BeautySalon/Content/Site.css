@@ -567,12 +567,13 @@ footer {
 #haircutAndStylingBtnContainer, .ourWorks, #diagnosticContainer, #haircutTrends, #stylingTypes, #mainContacts,
 #hairColoringTitleContainer, .hairColorTitle, #hairProceduresTitleContainer, .hairProcedTitle,
 #makeUpTitleContainer, .makeUpTitle, #nailsTitleContainer, .nailsTitle, #cosmetTitleContainer,
-.cosmetTitle, #massageTitleContainer, .massageTitle, #manSalonTitleContainer, .manSalonTitle {
-    text-align: center;
+.cosmetTitle, #massageTitleContainer, .massageTitle, #manSalonTitleContainer, .manSalonTitle,
+#teamTitleContainer, .teamTitle {
+	text-align: center;
 }
 
 .haircutItem, .pricesItem, .hairColorItem, .hairProcedItem, .makeUpItem, .nailsItem,
-.cosmetItem, .massageItem, .manSalonItem {
+.cosmetItem, .massageItem, .manSalonItem, .teamItem {
     margin-top: 3%;
     margin-bottom: 3%;
 }
@@ -691,7 +692,7 @@ div#ui-datepicker-div {
 }
 
 .hairColorArticle, .hairProcedArticle, .makeUpArticle, .nailsArticle, .cosmetArticle, .massageArticle,
-.manSalonArticle {
+.manSalonArticle, .teamArticle {
 	text-indent: 1em;
 }
 
@@ -714,4 +715,14 @@ div#ui-datepicker-div {
 .promotionDescription.collapsed {
     max-height: 300px;
     overflow-y: hidden;
+}
+
+.teamBorder {
+	border: solid 2px gray;
+}
+
+.teamRow {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 20px;
 }

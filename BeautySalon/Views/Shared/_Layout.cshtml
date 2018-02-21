@@ -117,8 +117,12 @@
                                     О нас <span class="badge">2</span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="#">Наша команда</a></li>
-                                    <li><a href="#">Отзывы</a></li>
+                                    <li class="@Html.ActiveLink(actions: "OurTeam", controllers: "Home")">
+										<a href="@Url.Action("OurTeam", "Home")">Наша команда</a>
+									</li>
+                                    <li>
+										<a href="#">Отзывы</a>
+									</li>
                                 </ul>
                             </li>
                             @Html.Partial("_LoginPartial")
