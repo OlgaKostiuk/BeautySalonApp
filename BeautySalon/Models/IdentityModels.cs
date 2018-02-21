@@ -1,6 +1,8 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using BeautySalon.Models.Feedbacks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -27,5 +29,11 @@ namespace BeautySalon.Models
 
         public string Name { get; set; }
         public string Gender { get; set; }
+
+        public virtual ICollection<Feedback> Feedbacks { get; set; }
+        public ApplicationUser()
+        {
+            Feedbacks = new HashSet<Feedback>();
+        }
     }
 }
