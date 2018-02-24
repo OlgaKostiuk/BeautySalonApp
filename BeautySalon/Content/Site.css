@@ -671,6 +671,10 @@ footer {
     height: auto;
 }
 
+.customInput[type=file]{
+    border: none;
+}
+
 div#ui-datepicker-div {
     z-index: 501 !important;
     width: initial;
