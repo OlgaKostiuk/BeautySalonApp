@@ -27,7 +27,8 @@ h4 {
     font-weight: 700;
 }
 
-.roundBtn {
+.roundBtn,
+#inputFileContainer label {
     font-size: 18pt;
     font-weight: 700;
     color: #19204E;
@@ -44,14 +45,16 @@ h4 {
     outline: none;
 }
 
-.roundBtn:hover, .roundBtn:active {
-    background: linear-gradient(to right, white, #C5DCE2);
-}
+    .roundBtn:hover, .roundBtn:active,
+    #inputFileContainer label:hover, #inputFileContainer label:active {
+        background: linear-gradient(to right, white, #C5DCE2);
+    }
 
-.roundBtn.isSelected {
-    background: linear-gradient(to right, #9A013A, #19204E);
-    color: white;
-}
+    .roundBtn.isSelected,
+    #inputFileContainer label.isSelected {
+        background: linear-gradient(to right, #9A013A, #19204E);
+        color: white;
+    }
 
 #topRowHeader {
     padding: 10px;

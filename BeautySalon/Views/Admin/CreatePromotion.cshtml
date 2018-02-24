@@ -1,5 +1,7 @@
 ﻿@using System.Web.Configuration
 @model BeautySalon.Models.Promotions.PromotionViewModel
+<link href="~/dist/filestyle/jquery-filestyle.min.css" rel="stylesheet" />
+<script src="~/dist/filestyle/jquery-filestyle.min.js"></script>
 
 <div class="col-sm-10 col-sm-offset-1">
     <h2>@ViewBag.Title</h2>
@@ -50,14 +52,22 @@
                 @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <input class="customInput form-control" type="file" id="pictures" name="pictures" accept="image/jpeg,image/png,image/gif" multiple="multiple" />
                 @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
         
+        <div class="form-group">
+            @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10" id="inputFileContainer">
+                <input class="jfilestyle" data-input="false" data-text="Выбрать картинки" type="file" id="pictures" name="pictures" accept="image/jpeg,image/png,image/gif" multiple="multiple" />
+                @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         <div class="col-md-12 images" style="clear: both">
             @if (Model.Images != null && Model.Images.Count != 0)
             {

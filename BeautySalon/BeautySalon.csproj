@@ -307,6 +307,8 @@
     <Content Include="Content\themes\base\tabs.css" />
     <Content Include="Content\themes\base\theme.css" />
     <Content Include="Content\themes\base\tooltip.css" />
+    <Content Include="dist\filestyle\jquery-filestyle.min.css" />
+    <Content Include="dist\filestyle\jquery-filestyle.min.js" />
     <Content Include="dist\lang\summernote-ar-AR.js" />
     <Content Include="dist\lang\summernote-bg-BG.js" />
     <Content Include="dist\lang\summernote-ca-ES.js" />
