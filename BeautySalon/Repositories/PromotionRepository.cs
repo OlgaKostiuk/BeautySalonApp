@@ -38,7 +38,7 @@ namespace BeautySalon.Repositories
             model.Date = original.Date;
 
             _context.Entry(original).CurrentValues.SetValues(model);
-            original.Images.ForEach(x => x.IsDeleted = true);
+            //original.Images.ForEach(x => x.IsDeleted = true);
             model.Images.ForEach(x => original.Images.Add(x));
             _context.SaveChanges();
             return original;

@@ -10,7 +10,7 @@
                 <div class="row">
                     <h3>@promotion.Title</h3>
 
-                    <p>@promotion.StartDate-@promotion.EndDate</p>
+                    <p>@(promotion.StartDate?.ToString("dd.MM.yyyy")) - @(promotion.EndDate?.ToString("dd.MM.yyyy"))</p>
                     <div class="col-lg-6 col-md-12">
                         <div id="@("promotionCarousel" + promotion.Id)" class="carousel slide promotionCarousel" data-ride="carousel">
                             <!-- Indicators -->
@@ -42,7 +42,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12 promotionDescription collapsed" data-id="@promotion.Id">@Html.Raw(@promotion.Description)</div>
+                    <div class="col-lg-6 col-md-12 promotionDescription collapsed" data-id="@promotion.Id">@Html.Raw(promotion.Description)</div>
                 </div>
 
                 <div class="col-xs-12 text-right">

@@ -111,7 +111,7 @@
     $("#pictures").on("change",
         function () {
             if ($(this)[0].files.length == 0) return;
-            $("div.images").html("");
+            //$("div.images").html("");
             let index = 0;
             var reader = new FileReader();
             reader.onload = function (e) {
