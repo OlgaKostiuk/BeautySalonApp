@@ -29,8 +29,8 @@ namespace BeautySalon.Models
             roleManager.Create(role2);
 
             // создаем пользователей
-            var admin = new ApplicationUser { Email = "somemail@mail.ru", UserName = "somemail@mail.ru", EmailConfirmed = true, Name = "Admin", Gender = "женский" };
-            string password = "ad46D_ewr3";
+            var admin = new ApplicationUser { Email = "admin@gmail.com", UserName = "admin@gmail.com", EmailConfirmed = true, Name = "Admin", Gender = "женский" };
+            string password = "adminPass";
             var result = userManager.Create(admin, password);
 
             // если создание пользователя прошло успешно

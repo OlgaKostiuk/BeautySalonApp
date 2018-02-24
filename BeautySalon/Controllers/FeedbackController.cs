@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BeautySalon.Models.Feedbacks;
+using Microsoft.AspNet.Identity;
 
 namespace BeautySalon.Controllers
 {
@@ -24,28 +25,23 @@ namespace BeautySalon.Controllers
             return View();
         }
 
+        // POST: Feedback/Create
         [Authorize]
         [HttpPost]
-        // GET: Feedback/Create
-        public ActionResult Create()
+        public ActionResult Create(FeedbackViewModel model)
         {
-            return View();
-        }
-
-        // POST: Feedback/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                Feedback feedback = new Feedback()
+                {
+                    Text = model.Text,
+                    Date = DateTime.Now,
+                    UserId = User.Identity.GetUserId()
+                };
+                UnitOfWork.Instance.FeedbackRepository.Create(feedback);
+                return Json(new { response = "OK" });
             }
-            catch
-            {
-                return View();
-            }
+            return Json(new {response = "Error"});
         }
 
         // GET: Feedback/Edit/5

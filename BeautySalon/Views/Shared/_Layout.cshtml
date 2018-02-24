@@ -107,7 +107,7 @@
                             <li class="@Html.ActiveLink(actions: "Index", controllers: "Promotion")">
                                 <a href="@Url.Action("Index", "Promotion")">Акции и новости</a>
                             </li>
-                            <li><a href="#">Дисконтная программа</a></li>
+                            @*<li><a href="#">Дисконтная программа</a></li>*@
                             @*<li><a href="#">Контакты</a></li>*@
                             <li class="@Html.ActiveLink(actions: "Contacts", controllers: "Home")">
                                 <a href="@Url.Action("Contacts", "Home")">Контакты</a>
@@ -120,9 +120,10 @@
                                     <li class="@Html.ActiveLink(actions: "OurTeam", controllers: "Home")">
 										<a href="@Url.Action("OurTeam", "Home")">Наша команда</a>
 									</li>
-                                    <li>
-										<a href="#">Отзывы</a>
-									</li>
+                                    @*<li><a href="#">Отзывы</a></li>*@
+                                    <li class="@Html.ActiveLink(actions: "Index", controllers: "Feedback")">
+                                        <a href="@Url.Action("Index", "Feedback")">Отзывы</a>
+                                    </li>
                                 </ul>
                             </li>
                             @Html.Partial("_LoginPartial")

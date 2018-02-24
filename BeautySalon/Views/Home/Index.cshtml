@@ -51,14 +51,14 @@
                     Мастер салона поможет вам подобрать стильную прическу, которая подчеркнет ваши сильные стороны и
                     скроет недостатки.
                 </p>
-                <a href="HaircutAndStyling.html"><button type="button" class="btn roundBtn">Подробнее</button></a>
+                <a href="@Url.Action("HaircutAndStyling")"><button type="button" class="btn roundBtn">Подробнее</button></a>
             </div>
             <div id="secondHomeService" class="col-sm-6 homeServices">
                 <h4>Макияж</h4>
                 <p>
                     Мастер поможет создать как классический макияж, так и подобрать образ по стилю мероприятия.
                 </p>
-                <a href="#"><button type="button" class="btn roundBtn">Подробнее</button></a>
+                <a href="@Url.Action("MakeUp")"><button type="button" class="btn roundBtn">Подробнее</button></a>
             </div>
         </div>
         <div class="row">
@@ -67,18 +67,18 @@
                 <p>
                     Представьте, ваши ногти выглядят ухоженно и на них ваш любимый цвет.
                 </p>
-                <a href="#"><button type="button" class="btn roundBtn">Подробнее</button></a>
+                <a href="@Url.Action("Nails")"><button type="button" class="btn roundBtn">Подробнее</button></a>
             </div>
             <div id="fourthHomeService" class="col-sm-6 homeServices">
                 <h4>Массаж</h4>
                 <p>
                     Наш салон предоставляет услуги массажа разных видов и техник.
                 </p>
-                <a href="#"><button type="button" class="btn roundBtn">Подробнее</button></a>
+                <a href="@Url.Action("Massage")"><button type="button" class="btn roundBtn">Подробнее</button></a>
             </div>
         </div>
-        <button type="button" class="btn roundBtn">Посмотреть последние<br />выгодные предложения</button>
-    </div>
+        <a href="@Url.Action("Index", "Promotion")" class="btn roundBtn">Посмотреть последние<br />выгодные предложения</a>
+</div>
     <article class="container-fluid">
         <div class="row">
             <div class="col-md-5 col-md-offset-1">

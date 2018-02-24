@@ -15,7 +15,9 @@ namespace BeautySalon.Repositories
 
         public Feedback Create(Feedback model)
         {
-            throw new NotImplementedException();
+            _context.Feedbacks.Add(model);
+            _context.SaveChanges();
+            return model;
         }
 
         public Feedback GetById(int id)

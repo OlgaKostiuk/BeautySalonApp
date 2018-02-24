@@ -349,8 +349,11 @@ h4 {
     margin-left: 10%;
 }
 
-#servicesHomeWrapper > button {
-    display: block;
+#servicesHomeWrapper {
+    text-align: center;
+} 
+
+#servicesHomeWrapper > a {
     margin: 30px auto 30px auto;
 }
 
@@ -574,8 +577,8 @@ footer {
 
 .haircutItem, .pricesItem, .hairColorItem, .hairProcedItem, .makeUpItem, .nailsItem,
 .cosmetItem, .massageItem, .manSalonItem, .teamItem {
-    margin-top: 3%;
-    margin-bottom: 3%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 #haircutTrends .col-sm-6 {

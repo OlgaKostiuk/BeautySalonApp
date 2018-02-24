@@ -59,8 +59,7 @@ namespace BeautySalon.Controllers
                 }
                 UnitOfWork.Instance.PromotionRepository.Create(promotion);
 
-                //TODO: replace redirect to list of promotions or PromotionDetails
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Promotion");
             }
             return View(model);
         }
@@ -106,8 +105,7 @@ namespace BeautySalon.Controllers
                 }
                 UnitOfWork.Instance.PromotionRepository.Update(promotion);
 
-                //TODO: replace redirect to list of promotions or PromotionDetails
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Promotion");
             }
             return RedirectToAction("EditPromotion", model.Id);
         }

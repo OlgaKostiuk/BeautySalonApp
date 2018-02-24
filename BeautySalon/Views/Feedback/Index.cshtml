@@ -1,4 +1,5 @@
-﻿@model List<BeautySalon.Models.Feedbacks.FeedbackViewModel>
+﻿@using BeautySalon.Models.Feedbacks
+@model List<BeautySalon.Models.Feedbacks.FeedbackViewModel>
 @{
     ViewBag.Title = "Отзывы";
 }
@@ -14,5 +15,13 @@
             </div>
         }
     </div>
+    @if (!Request.IsAuthenticated)
+    {
+        <p>Чтобы оставить свой отзыв <a href="@Url.Action("Register", "Account")">зарегистрируйтесь</a> или <a href="@Url.Action("Login", "Account")">авторизуйтесь</a>, пожалуйста.</p>
+    }
+    else
+    {
+        @Html.Partial("_Create", new FeedbackViewModel());
+    }
 </div>
 
