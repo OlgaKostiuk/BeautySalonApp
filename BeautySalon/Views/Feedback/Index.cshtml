@@ -1,4 +1,5 @@
-﻿@using BeautySalon.Models.Feedbacks
+﻿@using BeautySalon.Models
+@using BeautySalon.Models.Feedbacks
 @model List<BeautySalon.Models.Feedbacks.FeedbackViewModel>
 @{
     ViewBag.Title = "Отзывы";
@@ -9,9 +10,19 @@
     <div class="panel-group">
         @foreach (var feedback in Model)
         {
-            <div class="panel panel-primary">
+            <div class="panel panel-primary feedback" data-id="@feedback.Id">
                 <div class="panel-heading">@feedback.UserName</div>
                 <div class="panel-body">@feedback.Text</div>
+                @if (Request.IsAuthenticated && User.IsInRole(RoleTypes.Admin))
+                {
+                    <div class="panel-footer text-right">
+                        @if (!feedback.IsApproved)
+                        {
+                            <button class="btn btn-success btn-lg approve" data-id="@feedback.Id">Одобрить</button>
+                        }
+                        <button class="btn btn-danger btn-lg delete" data-id="@feedback.Id">Удалить</button>
+                    </div>
+                }
             </div>
         }
     </div>
@@ -25,3 +36,25 @@
     }
 </div>
 
+<script>
+    $(function() {
+        $(".delete").click(function() {
+            //location.href = '@Url.Action("EditPromotion", "Admin")/' + $(this).attr("data-id");
+            //var formdata = $("#feedbackForm").serialize();
+            var id = $(this).attr("data-id");
+            $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("DeleteFeedback", "Admin")',
+                    //data: formdata,
+                    data: {id: id},
+                    success: function(response) {
+                    if (response.response === "OK") {
+                        $(".feedback[data-id=" + id + "]").remove();
+                    } else {
+                        alert("Ошибка");
+                    }
+                }
+            });
+        });
+    });
+</script>

@@ -32,12 +32,21 @@ namespace BeautySalon.Repositories
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Feedback feedback = _context.Feedbacks.FirstOrDefault(x => x.Id == id);
+
+            if (feedback == null) return;
+
+            feedback.IsDeleted = true;
+            _context.SaveChanges();
         }
 
-        public List<Feedback> GetAll()
+        public List<Feedback> GetAllApproved()
         {
             return _context.Feedbacks.Where(x => !x.IsDeleted && x.IsApproved).ToList();
+        }
+        public List<Feedback> GetAll()
+        {
+            return _context.Feedbacks.Where(x => !x.IsDeleted).OrderBy(x => x.IsApproved ? 1 : 0).ToList();
         }
     }
 }

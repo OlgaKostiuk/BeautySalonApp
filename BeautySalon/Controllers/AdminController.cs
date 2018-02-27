@@ -131,5 +131,13 @@ namespace BeautySalon.Controllers
                 return View();
             }
         }
+
+        [HttpPost]
+        public ActionResult DeleteFeedback(int id)
+        {
+
+            UnitOfWork.Instance.FeedbackRepository.Delete(id);
+            return Json(new { response = "OK" });
+        }
     }
 }

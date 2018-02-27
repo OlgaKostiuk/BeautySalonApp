@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BeautySalon.Models;
 using BeautySalon.Models.Feedbacks;
 using Microsoft.AspNet.Identity;
 
@@ -13,8 +14,17 @@ namespace BeautySalon.Controllers
         // GET: Feedback
         public ActionResult Index()
         {
-            List<FeedbackViewModel> feedbacks = UnitOfWork.Instance.FeedbackRepository.GetAll()
-                .Select(x => new FeedbackViewModel() {Id = x.Id, Text = x.Text, Date = x.Date, UserName = x.User.Name})
+            List<Feedback> feedbacksData;
+            if (User.Identity.IsAuthenticated && User.IsInRole(RoleTypes.Admin))
+            {
+                feedbacksData = UnitOfWork.Instance.FeedbackRepository.GetAll().ToList();
+            }
+            else
+            {
+                feedbacksData = UnitOfWork.Instance.FeedbackRepository.GetAllApproved();
+            }
+            List<FeedbackViewModel> feedbacks = feedbacksData
+                .Select(x => new FeedbackViewModel() {Id = x.Id, Text = x.Text, Date = x.Date, UserName = x.User.Name, IsApproved = x.IsApproved})
                 .ToList();
             return View(feedbacks);
         }
@@ -41,7 +51,7 @@ namespace BeautySalon.Controllers
                 UnitOfWork.Instance.FeedbackRepository.Create(feedback);
                 return Json(new { response = "OK" });
             }
-            return Json(new {response = "Error"});
+            return Json(new {response = "Error", msg = "Invalid data"});
         }
 
         // GET: Feedback/Edit/5
