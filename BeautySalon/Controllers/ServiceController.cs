@@ -13,7 +13,7 @@ namespace BeautySalon.Controllers
         public ActionResult Index()
         {
             List<ServiceViewModel> viewModel = UnitOfWork.Instance.ServiceRepository.GetAll()
-                .Select(x => new ServiceViewModel() {Category = x, Services = x.Services.ToList()}).ToList();
+                .Select(x => new ServiceViewModel() {Id = x.Id, Category = x, Services = x.Services.ToList()}).ToList();
             return View(viewModel);
         }
 

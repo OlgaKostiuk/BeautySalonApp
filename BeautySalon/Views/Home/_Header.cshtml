@@ -1,0 +1,123 @@
+﻿@model List<BeautySalon.Models.Services.ServiceViewModel>
+
+@{
+    Layout = null;
+}
+
+<div id="topRowHeader" class="row">
+    <div id="phoneInHeader" class="col-md-3 hidden-sm hidden-xs">
+        <h2>
+            <span class="glyphicon glyphicon-earphone"></span> (067) 777-37-73
+        </h2>
+        <a data-toggle="modal" data-target="#Callback"><span>Перезвонить вам?</span></a>
+    </div>
+    <div id="pictureInHeader" class="col-md-2 col-sm-4">
+        <img class="img-responsive" src="~/images/header_brand.png">
+    </div>
+    <div id="titleInHeader" class="col-md-4 col-sm-8">
+        <a href="#">
+            <h1>Скарлет</h1>
+            <p>салон красоты</p>
+        </a>
+    </div>
+    <div id="buttonInHeader" class="col-md-3 hidden-sm hidden-xs">
+        <button type="button" class="btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
+    </div>
+</div>
+
+<div class="row">
+    <div id="phoneInHeader2" class="col-sm-6 col-xs-6 hidden-md hidden-lg">
+        <h2>
+            <span class="glyphicon glyphicon-earphone"></span> (067) 777-37-73
+        </h2>
+        <a data-toggle="modal" data-target="#Callback"><span>Перезвонить вам?</span></a>
+    </div>
+    <div id="buttonInHeader2" class="col-sm-6 col-xs-6 hidden-md hidden-lg">
+        <button type="button" class="btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
+    </div>
+</div>
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="BookService" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+                <h4 class="modal-title">Запись в салон</h4>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="form-group">
+                        <label for="date">Выберите дату:</label>
+                        <input type="datetime" class="form-control date-picker" id="date" required name="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Выберите время:</label>
+                        <input type="time" class="form-control" id="time" required name="time">
+                    </div>
+                    <div class="form-group">
+                        <label>Выберите вид услуги:</label>
+                        <select class="form-control">
+                            <option value="haircut">Парикмахерские услуги</option>
+                            <option value="coloration">Окрашивание</option>
+                            <option value="hairTreatment">Процедуры для волос</option>
+                            <option value="makeup">Визаж</option>
+                            <option value="nailService">Ногтевой сервис</option>
+                            <option value="cosmetology">Косметологические услуги</option>
+                            <option value="massage">Массаж</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Как к вам можно обращаться?" required name="clientName">
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Контактный номер" required name="phone">
+                    </div>
+                    <button type="submit" class="btn roundBtn">Отправить</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn roundBtn" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="Callback" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
+                <h4 class="modal-title">Обратный звонок</h4>
+            </div>
+            <div class="modal-body">
+                <form action="">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Как к вам можно обращаться?" required name="clientName">
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Контактный номер" required name="phone">
+                    </div>
+                    <button type="submit" class="btn roundBtn">Отправить</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn roundBtn" data-dismiss="modal">Закрыть</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.date-picker').datepicker($.datepicker.regional["ru"]);
+    });
+</script>

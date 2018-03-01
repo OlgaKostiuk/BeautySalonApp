@@ -529,6 +529,7 @@
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\Home\OurTeam.cshtml" />
     <Content Include="Views\Feedback\_Create.cshtml" />
+    <Content Include="Views\Home\_Header.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

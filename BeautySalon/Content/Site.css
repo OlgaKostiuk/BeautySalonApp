@@ -683,7 +683,7 @@ footer {
 }
 
 div#ui-datepicker-div {
-    z-index: 501 !important;
+    z-index: 3000 !important;
     width: initial;
 }
 

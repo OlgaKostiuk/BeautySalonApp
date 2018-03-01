@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BeautySalon.Models.Services;
 
 namespace BeautySalon.Controllers
 {
@@ -72,6 +73,13 @@ namespace BeautySalon.Controllers
         public ActionResult OurTeam()
         {
             return View();
+        }
+
+        public ActionResult Header()
+        {
+            List<ServiceViewModel> viewModel = UnitOfWork.Instance.ServiceRepository.GetAll()
+                .Select(x => new ServiceViewModel() { Id = x.Id, Category = x, Services = x.Services.ToList() }).ToList();
+            return View("_Header", viewModel);
         }
     }
 }
