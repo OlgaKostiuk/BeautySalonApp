@@ -36,20 +36,52 @@
     }
 </div>
 
+<div class="modal fade" id="feedbackApprovedModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-body">
+                    <p>Отзыв добавлен</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     $(function() {
         $(".delete").click(function() {
-            //location.href = '@Url.Action("EditPromotion", "Admin")/' + $(this).attr("data-id");
-            //var formdata = $("#feedbackForm").serialize();
             var id = $(this).attr("data-id");
             $.ajax({
                     type: 'POST',
                     url: '@Url.Action("DeleteFeedback", "Admin")',
-                    //data: formdata,
                     data: {id: id},
                     success: function(response) {
                     if (response.response === "OK") {
                         $(".feedback[data-id=" + id + "]").remove();
+                    } else {
+                        alert("Ошибка");
+                    }
+                }
+            });
+        });
+
+        $(".approve").click(function() {
+            var id = $(this).attr("data-id");
+            var thisBtn = this;
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("ApproveFeedback", "Admin")',
+                data: {id: id},
+                success: function(response) {
+                    if (response.response === "OK") {
+                        $('#feedbackApprovedModal').modal('show');
+                        $(thisBtn).remove();
+                        setTimeout(function(){
+                            $("#feedbackApprovedModal").modal('hide');
+                        }, 700);
                     } else {
                         alert("Ошибка");
                     }

@@ -112,7 +112,11 @@
                             <li class="@Html.ActiveLink(actions: "Contacts", controllers: "Home")">
                                 <a href="@Url.Action("Contacts", "Home")">Контакты</a>
                             </li>
-                            <li class="dropdown">
+                            @*<li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    О нас <span class="badge">2</span>
+                                </a>*@
+                            <li class="dropdown @Html.ActiveLink(actions: "OurTeam,Index", controllers: "Home,Feedback")">
                                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                                     О нас <span class="badge">2</span>
                                 </a>

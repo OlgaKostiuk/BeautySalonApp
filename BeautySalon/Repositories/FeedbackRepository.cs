@@ -40,6 +40,16 @@ namespace BeautySalon.Repositories
             _context.SaveChanges();
         }
 
+        public void Approve(int id)
+        {
+            Feedback feedback = _context.Feedbacks.FirstOrDefault(x => x.Id == id);
+
+            if (feedback == null) return;
+
+            feedback.IsApproved = true;
+            _context.SaveChanges();
+        }
+
         public List<Feedback> GetAllApproved()
         {
             return _context.Feedbacks.Where(x => !x.IsDeleted && x.IsApproved).ToList();
