@@ -1,0 +1,47 @@
+﻿@model System.Collections.Generic.List<BeautySalon.Models.Orders.CallbackOrderViewModel>
+
+<main class="container">
+    <div class="tab-content col-sm-10 col-sm-offset-1">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th class="text-center">Имя</th>
+                <th class="text-center">Номер телефона</th>
+                <th class="text-center">Дата и время</th>
+                <th class="text-center">Удалить как<br/>обработанный запрос</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+                <tr data-id="@item.Id" class="callback text-center">
+                    <td>@item.Name</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@item.DateTime.ToString("dd/MM/yy HH:mm")</td>
+                    <td><button class="btn btn-primary btn-lg delete" data-id="@item.Id">Удалить</button></td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<script>
+    $(function() {
+        $(".delete").click(function() {
+            var id = $(this).attr("data-id");
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DeleteCallbackOrder", "Admin")',
+                data: {id: id},
+                success: function(response) {
+                    if (response.response === "OK") {
+                        $(".callback[data-id=" + id + "]").remove();
+                    } else {
+                        alert("Ошибка");
+                    }
+                }
+            });
+        });
+    });
+</script>

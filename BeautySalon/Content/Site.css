@@ -76,7 +76,7 @@ h4 {
 
 #phoneInHeader, #phoneInHeader2 {
     margin: 100px auto 15px auto;
-    text-align: right;
+    text-align: center;
     line-height: 0.5;
 }
 
@@ -90,6 +90,10 @@ h4 {
 #phoneInHeader > a span, #phoneInHeader2 > a span, .contactPhone > a span {
     border-bottom: 2px solid #19204E;
     cursor: pointer;
+}
+
+.CallbackOrdersList {
+    margin-top: 15px;
 }
 
 #pictureInHeader {
@@ -740,3 +744,8 @@ div#ui-datepicker-div {
 	justify-content: center;
 	margin-bottom: 20px;
 }
+
+.table > thead > tr > th {
+     vertical-align: middle;
+}
+

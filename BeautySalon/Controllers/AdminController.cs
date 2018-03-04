@@ -6,7 +6,9 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using BeautySalon.Models;
+using BeautySalon.Models.Orders;
 using BeautySalon.Models.Promotions;
+using BeautySalon.Models.Services;
 
 namespace BeautySalon.Controllers
 {
@@ -145,6 +147,20 @@ namespace BeautySalon.Controllers
         {
 
             UnitOfWork.Instance.FeedbackRepository.Approve(id);
+            return Json(new { response = "OK" });
+        }
+
+        public ActionResult CallbackOrdersList()
+        {
+            List<CallbackOrderViewModel> viewModel = UnitOfWork.Instance.OrderRepository.GetAllCallbackOrders()
+                .Select(x => new CallbackOrderViewModel() { Id = x.Id, Name = x.Name, PhoneNumber = x.PhoneNumber, DateTime = x.DateTime }).ToList();
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteCallbackOrder(int id)
+        {
+            UnitOfWork.Instance.OrderRepository.Delete(id);
             return Json(new { response = "OK" });
         }
     }

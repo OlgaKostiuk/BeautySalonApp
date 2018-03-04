@@ -23,6 +23,8 @@ namespace BeautySalon
 
         private FeedbackRepository _feedbackRepository;
 
+        private OrderRepository _orderRepository;
+
         public PromotionRepository PromotionRepository =>
             _promotionRepository ?? (_promotionRepository = new PromotionRepository(_context));
 
@@ -31,5 +33,8 @@ namespace BeautySalon
 
         public FeedbackRepository FeedbackRepository =>
             _feedbackRepository ?? (_feedbackRepository = new FeedbackRepository(_context));
+
+        public OrderRepository OrderRepository =>
+            _orderRepository ?? (_orderRepository = new OrderRepository(_context));
     }
 }

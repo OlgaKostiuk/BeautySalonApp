@@ -12,7 +12,7 @@ namespace BeautySalon.Controllers
     public class FeedbackController : Controller
     {
         // GET: Feedback
-        public ActionResult Index()
+        public ActionResult List()
         {
             List<Feedback> feedbacksData;
             if (User.Identity.IsAuthenticated && User.IsInRole(RoleTypes.Admin))
@@ -68,7 +68,7 @@ namespace BeautySalon.Controllers
             {
                 // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             catch
             {
@@ -90,7 +90,7 @@ namespace BeautySalon.Controllers
             {
                 // TODO: Add delete logic here
 
-                return RedirectToAction("Index");
+                return RedirectToAction("List");
             }
             catch
             {

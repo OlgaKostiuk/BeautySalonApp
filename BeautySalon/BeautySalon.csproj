@@ -233,6 +233,14 @@
     <Compile Include="Migrations\201802192106294_Feedbacks.Designer.cs">
       <DependentUpon>201802192106294_Feedbacks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803040948033_CallbackOrders.cs" />
+    <Compile Include="Migrations\201803040948033_CallbackOrders.Designer.cs">
+      <DependentUpon>201803040948033_CallbackOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803040953002_CallbackOrdersFix.cs" />
+    <Compile Include="Migrations\201803040953002_CallbackOrdersFix.Designer.cs">
+      <DependentUpon>201803040953002_CallbackOrdersFix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AppDbInitializer.cs" />
@@ -241,6 +249,8 @@
     <Compile Include="Models\Feedbacks\FeedbackViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Orders\CallbackOrder.cs" />
+    <Compile Include="Models\Orders\CallbackOrderViewModel.cs" />
     <Compile Include="Models\PageRequestModel.cs" />
     <Compile Include="Models\PageViewModel.cs" />
     <Compile Include="Models\Promotions\PromotionViewModel.cs" />
@@ -254,6 +264,7 @@
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="Repositories\FeedbackRepository.cs" />
     <Compile Include="Repositories\ICrud.cs" />
+    <Compile Include="Repositories\OrderRepository.cs" />
     <Compile Include="Repositories\PromotionRepository.cs" />
     <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="Startup.cs" />
@@ -526,10 +537,11 @@
     <Content Include="Views\Home\Cosmetology.cshtml" />
     <Content Include="Views\Home\ManSalon.cshtml" />
     <Content Include="Views\Home\Massage.cshtml" />
-    <Content Include="Views\Feedback\Index.cshtml" />
+    <Content Include="Views\Feedback\List.cshtml" />
     <Content Include="Views\Home\OurTeam.cshtml" />
     <Content Include="Views\Feedback\_Create.cshtml" />
     <Content Include="Views\Home\_Header.cshtml" />
+    <Content Include="Views\Admin\CallbackOrdersList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -564,6 +576,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802192106294_Feedbacks.resx">
       <DependentUpon>201802192106294_Feedbacks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803040948033_CallbackOrders.resx">
+      <DependentUpon>201803040948033_CallbackOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803040953002_CallbackOrdersFix.resx">
+      <DependentUpon>201803040953002_CallbackOrdersFix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

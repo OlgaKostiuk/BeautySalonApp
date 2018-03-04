@@ -1,4 +1,7 @@
-﻿@model List<BeautySalon.Models.Services.ServiceViewModel>
+﻿@using BeautySalon.Models
+@model List<BeautySalon.Models.Services.ServiceViewModel>
+
+@Scripts.Render("~/bundles/jqueryval")
 
 @{
     Layout = null;
@@ -10,6 +13,10 @@
             <span class="glyphicon glyphicon-earphone"></span> (067) 777-37-73
         </h2>
         <a data-toggle="modal" data-target="#Callback"><span>Перезвонить вам?</span></a>
+        @if (Request.IsAuthenticated && User.IsInRole(RoleTypes.Admin))
+        {
+            <button class="CallbackOrdersList btn btn-primary btn-lg">Список запросов на обратный звонок</button>
+        }
     </div>
     <div id="pictureInHeader" class="col-md-2 col-sm-4">
         <img class="img-responsive" src="~/images/header_brand.png">
@@ -31,6 +38,10 @@
             <span class="glyphicon glyphicon-earphone"></span> (067) 777-37-73
         </h2>
         <a data-toggle="modal" data-target="#Callback"><span>Перезвонить вам?</span></a>
+        @if (Request.IsAuthenticated && User.IsInRole(RoleTypes.Admin))
+        {
+            <button class="CallbackOrdersList btn btn-primary btn-lg">Список запросов на обратный звонок</button>
+        }
     </div>
     <div id="buttonInHeader2" class="col-sm-6 col-xs-6 hidden-md hidden-lg">
         <button type="button" class="btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
@@ -73,10 +84,12 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label>Имя</label>
                         <input type="text" class="form-control" placeholder="Как к вам можно обращаться?" required name="clientName">
                     </div>
                     <div class="form-group">
-                        <input type="tel" class="form-control" placeholder="Контактный номер" required name="phone">
+                        <label>Контактный номер</label>
+                        <input type="tel" class="form-control" placeholder="0123456789" required name="phone">
                     </div>
                     <button type="submit" class="btn roundBtn">Отправить</button>
                 </form>
@@ -98,26 +111,63 @@
                 <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
                 <h4 class="modal-title">Обратный звонок</h4>
             </div>
-            <div class="modal-body">
-                <form action="">
+
+            <form id="callbackForm">
+                <div class="modal-body">
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Как к вам можно обращаться?" required name="clientName">
+                        <label>Имя</label>
+                        <input type="text" class="form-control" placeholder="Как к вам можно обращаться?" required name="Name">
                     </div>
                     <div class="form-group">
-                        <input type="tel" class="form-control" placeholder="Контактный номер" required name="phone">
+                        <label>Контактный номер</label>
+                        <input type="tel" class="form-control" placeholder="0123456789" required name="PhoneNumber">
                     </div>
-                    <button type="submit" class="btn roundBtn">Отправить</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn roundBtn" data-dismiss="modal">Закрыть</button>
-            </div>
+                    <div id="callbackErrors"></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="submitCallback" type="button" class="btn roundBtn">Отправить</button>
+                    <button type="button" class="btn roundBtn" data-dismiss="modal">Закрыть</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
-<script>
-    $(function () {
+<script type="text/javascript">
+    $(function() {
         $('.date-picker').datepicker($.datepicker.regional["ru"]);
+
+        $("#submitCallback").click(function() {
+            //$("#callbackForm").validate();
+
+            //if ($("[name='Name']").valid() && $("[name='PhoneNumber']").valid()) {
+            var formdata = $("#callbackForm").serialize();
+
+            $("#callbackErrors").empty();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("CreateCallbackOrder")',
+                    data: formdata,
+                    success: function(response) {
+                        if (response.response === "OK") {
+                            $("#callbackForm .modal-body").empty();
+                            $("#callbackForm .modal-body").append("<p>Ваш запрос был отправлен</p>");
+                            $("#submitCallback").remove();
+                        } else {
+                            $.each(response.msg,
+                                function(index, value) {
+                                    $("#callbackErrors").append("<p class='text-danger'>"+ value +"</p>");
+                                });
+                            //alert("Введены не корректные данные: " + response.msg[0]);
+                        }
+                    }
+                });
+            //} 
+        });
+
+        $(".CallbackOrdersList").click(function () {
+            location.href = '@Url.Action("CallbackOrdersList", "Admin")';
+        });
     });
 </script>

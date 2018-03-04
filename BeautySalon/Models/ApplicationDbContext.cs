@@ -1,5 +1,6 @@
 ﻿using System.Data.Entity;
 using BeautySalon.Models.Feedbacks;
+using BeautySalon.Models.Orders;
 using BeautySalon.Models.Promotions;
 using BeautySalon.Models.Services;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -25,5 +26,7 @@ namespace BeautySalon.Models
         public DbSet<Service> Services { get; set; }
 
         public DbSet<Feedback> Feedbacks { get; set; }
+
+        public DbSet<CallbackOrder> CallbackOrders { get; set; }
     }
 }
