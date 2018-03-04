@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using BeautySalon.Models.Orders;
 
 namespace BeautySalon.Models.Services
 {
@@ -19,10 +20,12 @@ namespace BeautySalon.Models.Services
         public virtual ServiceCategory Category { get; set; }
 
         public virtual ICollection<ServiceSubtype> Subtypes { get; set; }
+        public virtual ICollection<Booking> Bookings { get; set; }
 
         public Service()
         {
             Subtypes = new HashSet<ServiceSubtype>();
+            Bookings = new HashSet<Booking>();
         }
     }
 }

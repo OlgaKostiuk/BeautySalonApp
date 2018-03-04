@@ -28,5 +28,6 @@ namespace BeautySalon.Models
         public DbSet<Feedback> Feedbacks { get; set; }
 
         public DbSet<CallbackOrder> CallbackOrders { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
     }
 }

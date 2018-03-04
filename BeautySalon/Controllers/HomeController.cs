@@ -78,11 +78,13 @@ namespace BeautySalon.Controllers
 
         public ActionResult Header()
         {
-            List<ServiceViewModel> viewModel = UnitOfWork.Instance.ServiceRepository.GetAll()
+            List<ServiceViewModel> serviceList = UnitOfWork.Instance.ServiceRepository.GetAll()
                 .Select(x => new ServiceViewModel() { Id = x.Id, Category = x, Services = x.Services.ToList() }).ToList();
-            return View("_Header", viewModel);
+
+            return View("_Header", new BookingViewModel(){ ServiceList = serviceList });
         }
 
+        [HttpPost]
         public ActionResult CreateCallbackOrder(CallbackOrderViewModel model)
         {
             if (ModelState.IsValid)
@@ -102,6 +104,30 @@ namespace BeautySalon.Controllers
                 List<string> allErrorsMessages = allErrors.Select(x => x.ErrorMessage).ToList();
                 return Json(new { response = "Error", msg = allErrorsMessages });
             }      
+        }
+
+        [HttpPost]
+        public ActionResult CreateBookingService(BookingViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                //CallbackOrder callbackOrder = new CallbackOrder()
+                //{
+                //    Name = model.Name,
+                //    DateTime = DateTime.Now,
+                //    IsPending = true,
+                //    PhoneNumber = model.PhoneNumber
+                //};
+                //UnitOfWork.Instance.OrderRepository.Create(callbackOrder);
+                return Json(new { response = "OK" });
+            }
+            else
+            {
+                //List<ModelErrorCollection> errors = ModelState.Select(x => x.Value.Errors).Where(y => y.Count > 0).ToList();
+                List<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors).ToList();
+                List<string> allErrorsMessages = allErrors.Select(x => x.ErrorMessage).ToList();
+                return Json(new { response = "Error", msg = allErrorsMessages });
+            }
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿@using BeautySalon.Models
-@model List<BeautySalon.Models.Services.ServiceViewModel>
+@using BeautySalon.Models.Services
+@model BeautySalon.Models.Orders.BookingViewModel
 
 @Scripts.Render("~/bundles/jqueryval")
 
@@ -7,14 +8,19 @@
     Layout = null;
 }
 
+@{
+    var forWomen = Model.ServiceList.Where(x => x.Category.GenderAffiliation == GenderAffiliation.ForWomen).ToList();
+    var forMen = Model.ServiceList.Where(x => x.Category.GenderAffiliation == GenderAffiliation.ForMen).ToList();
+}
+
 <div id="topRowHeader" class="row">
     <div id="phoneInHeader" class="col-md-3 hidden-sm hidden-xs">
         <h2>
             <span class="glyphicon glyphicon-earphone"></span> (067) 777-37-73
         </h2>
-        <a data-toggle="modal" data-target="#Callback"><span>Перезвонить вам?</span></a>
+        <a class="callbackFormOpen" data-toggle="modal" data-target="#Callback"><span>Перезвонить вам?</span></a>
         @if (Request.IsAuthenticated && User.IsInRole(RoleTypes.Admin))
-        {
+            {
             <button class="CallbackOrdersList btn btn-primary btn-lg">Список запросов на обратный звонок</button>
         }
     </div>
@@ -28,7 +34,7 @@
         </a>
     </div>
     <div id="buttonInHeader" class="col-md-3 hidden-sm hidden-xs">
-        <button type="button" class="btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
+        <button type="button" class="bookingServiceOpen btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
     </div>
 </div>
 
@@ -37,18 +43,16 @@
         <h2>
             <span class="glyphicon glyphicon-earphone"></span> (067) 777-37-73
         </h2>
-        <a data-toggle="modal" data-target="#Callback"><span>Перезвонить вам?</span></a>
+        <a class="callbackFormOpen" data-toggle="modal" data-target="#Callback"><span>Перезвонить вам?</span></a>
         @if (Request.IsAuthenticated && User.IsInRole(RoleTypes.Admin))
-        {
+            {
             <button class="CallbackOrdersList btn btn-primary btn-lg">Список запросов на обратный звонок</button>
         }
     </div>
     <div id="buttonInHeader2" class="col-sm-6 col-xs-6 hidden-md hidden-lg">
-        <button type="button" class="btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
+        <button type="button" class="bookingServiceOpen btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
     </div>
 </div>
-
-
 
 
 <!-- Modal -->
@@ -61,42 +65,49 @@
                 <button type="button" class="close" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></button>
                 <h4 class="modal-title">Запись в салон</h4>
             </div>
-            <div class="modal-body">
-                <form action="">
+
+            <form id="bookingForm">
+                <div class="modal-body">
                     <div class="form-group">
                         <label for="date">Выберите дату:</label>
-                        <input type="datetime" class="form-control date-picker" id="date" required name="date">
+                        <input type="datetime" class="form-control date-picker" id="date" required name="Date">
                     </div>
                     <div class="form-group">
                         <label for="time">Выберите время:</label>
-                        <input type="time" class="form-control" id="time" required name="time">
+                        <input type="time" class="form-control" id="time" required name="Time">
                     </div>
+
+                    <div class="form-group">
+                        <label class="radio-inline"><input type="radio" name="bookingServiceGender" class="bookingServiceGender" value="forWomen">для женщин</label>
+                        <label class="radio-inline"><input type="radio" name="bookingServiceGender" class="bookingServiceGender" value="forMen">для мужчин</label>
+                    </div>
+
                     <div class="form-group">
                         <label>Выберите вид услуги:</label>
-                        <select class="form-control">
-                            <option value="haircut">Парикмахерские услуги</option>
-                            <option value="coloration">Окрашивание</option>
-                            <option value="hairTreatment">Процедуры для волос</option>
-                            <option value="makeup">Визаж</option>
-                            <option value="nailService">Ногтевой сервис</option>
-                            <option value="cosmetology">Косметологические услуги</option>
-                            <option value="massage">Массаж</option>
-                        </select>
+                        <select class="form-control" id="bookingServiceCategory"></select>
                     </div>
+                    
+                    <div class="form-group">
+                        <label>Выберите услугу:</label>
+                        <select class="form-control" id="bookingService" name="ServiceId"></select>
+                    </div>
+
                     <div class="form-group">
                         <label>Имя</label>
-                        <input type="text" class="form-control" placeholder="Как к вам можно обращаться?" required name="clientName">
+                        <input type="text" class="form-control" placeholder="Как к вам можно обращаться?" required name="Name">
                     </div>
                     <div class="form-group">
                         <label>Контактный номер</label>
-                        <input type="tel" class="form-control" placeholder="0123456789" required name="phone">
+                        <input type="tel" class="form-control" placeholder="0123456789" required name="PhoneNumber">
                     </div>
-                    <button type="submit" class="btn roundBtn">Отправить</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn roundBtn" data-dismiss="modal">Закрыть</button>
-            </div>
+                    <div id="bookingErrors"></div>
+                </div>
+                <div class="modal-footer">
+                    <button id="submitBooking" type="button" class="btn roundBtn">Отправить</button>
+                    <button id="closeBooking" type="button" class="btn roundBtn" data-dismiss="modal">Закрыть</button>
+                </div>
+            </form>
+
         </div>
     </div>
 </div>
@@ -163,11 +174,96 @@
                         }
                     }
                 });
-            //} 
+            //}
+        });
+
+        var callbackModalBody = $("#callbackForm .modal-body").clone();
+        var callbackModalFooter = $("#callbackForm .modal-footer").clone();
+
+        $(".callbackFormOpen").click(function() {
+            if ($("#submitCallback").length === 0) {
+                $("#callbackForm .modal-body").replaceWith(callbackModalBody);
+                $("#callbackForm .modal-footer").replaceWith(callbackModalFooter);
+            }
         });
 
         $(".CallbackOrdersList").click(function () {
             location.href = '@Url.Action("CallbackOrdersList", "Admin")';
         });
+
+        var forWomen = @Html.Raw(Json.Encode(forWomen.Select(x => new {
+                      Id = x.Id,
+                      Title = x.Category.Title,
+                      Services = x.Services.Select(y => new { Id = y.Id, Title = y.Title })
+                  })));
+        var forMen = @Html.Raw(Json.Encode(forMen.Select(x => new {
+                      Id = x.Id,
+                      Title = x.Category.Title,
+                      Services = x.Services.Select(y => new { Id = y.Id, Title = y.Title })
+                  })));
+        var currentCategoryList;
+
+        $(".bookingServiceGender").change(function () {
+            var $dropdown = $("#bookingServiceCategory");
+            if (this.value === "forWomen") {
+                currentCategoryList = forWomen;
+            } else {
+                currentCategoryList = forMen;
+            };
+            $dropdown.empty();
+            $.each(currentCategoryList, function () {
+                $dropdown.append($("<option />").val(this.Id).text(this.Title));
+            });
+            $dropdown.change();
+        });
+
+        $("#bookingServiceCategory").change(function () {
+            var $dropdown = $("#bookingService");
+            var currentId = this.value;
+            var list = $.grep(currentCategoryList, function(el) {
+                return el.Id == currentId;
+            })[0].Services;
+            $dropdown.empty();
+            $.each(list, function () {
+                $dropdown.append($("<option />").val(this.Id).text(this.Title));
+            });
+        });
+
+        $(".bookingServiceGender[value='forWomen']").attr('checked', true).trigger("change");
+
+        var bookingModalBody = $("#bookingForm .modal-body").clone();
+        var bookingModalFooter = $("#bookingForm .modal-footer").clone();
+        
+        $("#submitBooking").click(function() {
+            var formdata = $("#bookingForm").serialize();
+
+            $("#bookingErrors").empty();
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("CreateBookingService")',
+                data: formdata,
+                success: function(response) {
+                    if (response.response === "OK") {
+                        $("#bookingForm .modal-body").empty();
+                        $("#bookingForm .modal-body").append("<p>Ваш запрос был отправлен</p>");
+                        $("#submitBooking").remove();
+                    } else {
+                        $.each(response.msg,
+                            function(index, value) {
+                                $("#bookingErrors").append("<p class='text-danger'>"+ value +"</p>");
+                            });
+                    }
+                }
+            });
+        });
+
+        $(".bookingServiceOpen").click(function() {
+            if ($("#submitBooking").length === 0) {
+                $("#bookingForm .modal-body").replaceWith(bookingModalBody);
+                $("#bookingForm .modal-footer").replaceWith(bookingModalFooter);
+            }
+        });
+
     });
 </script>
