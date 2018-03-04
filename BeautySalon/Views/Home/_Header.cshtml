@@ -9,8 +9,8 @@
 }
 
 @{
-    var forWomen = Model.ServiceList.Where(x => x.Category.GenderAffiliation == GenderAffiliation.ForWomen).ToList();
-    var forMen = Model.ServiceList.Where(x => x.Category.GenderAffiliation == GenderAffiliation.ForMen).ToList();
+    var forWomen = (ViewBag.ServiceList as List<ServiceViewModel>).Where(x => x.Category.GenderAffiliation == GenderAffiliation.ForWomen).ToList();
+    var forMen = (ViewBag.ServiceList as List<ServiceViewModel>).Where(x => x.Category.GenderAffiliation == GenderAffiliation.ForMen).ToList();
 }
 
 <div id="topRowHeader" class="row">
@@ -35,6 +35,10 @@
     </div>
     <div id="buttonInHeader" class="col-md-3 hidden-sm hidden-xs">
         <button type="button" class="bookingServiceOpen btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
+        @if (Request.IsAuthenticated && User.IsInRole(RoleTypes.Admin))
+        {
+            <button class="BookingsList btn btn-primary btn-lg">Список записей на услугу</button>
+        }
     </div>
 </div>
 
@@ -51,6 +55,10 @@
     </div>
     <div id="buttonInHeader2" class="col-sm-6 col-xs-6 hidden-md hidden-lg">
         <button type="button" class="bookingServiceOpen btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
+        @if (Request.IsAuthenticated && User.IsInRole(RoleTypes.Admin))
+        {
+            <button class="BookingsList btn btn-primary btn-lg">Список записей на услугу</button>
+        }
     </div>
 </div>
 
@@ -262,7 +270,12 @@
             if ($("#submitBooking").length === 0) {
                 $("#bookingForm .modal-body").replaceWith(bookingModalBody);
                 $("#bookingForm .modal-footer").replaceWith(bookingModalFooter);
+                $('.date-picker').datepicker($.datepicker.regional["ru"]);
             }
+        });
+
+        $(".BookingsList").click(function () {
+            location.href = '@Url.Action("BookingsList", "Admin")';
         });
 
     });

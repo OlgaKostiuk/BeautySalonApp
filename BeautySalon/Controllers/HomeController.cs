@@ -80,8 +80,8 @@ namespace BeautySalon.Controllers
         {
             List<ServiceViewModel> serviceList = UnitOfWork.Instance.ServiceRepository.GetAll()
                 .Select(x => new ServiceViewModel() { Id = x.Id, Category = x, Services = x.Services.ToList() }).ToList();
-
-            return View("_Header", new BookingViewModel(){ ServiceList = serviceList });
+            ViewBag.ServiceList = serviceList;
+            return View("_Header", new BookingViewModel(){ /*ServiceList = serviceList*/ });
         }
 
         [HttpPost]
@@ -111,14 +111,17 @@ namespace BeautySalon.Controllers
         {
             if (ModelState.IsValid)
             {
-                //CallbackOrder callbackOrder = new CallbackOrder()
-                //{
-                //    Name = model.Name,
-                //    DateTime = DateTime.Now,
-                //    IsPending = true,
-                //    PhoneNumber = model.PhoneNumber
-                //};
-                //UnitOfWork.Instance.OrderRepository.Create(callbackOrder);
+                Booking booking = new Booking()
+                {
+                    Name = model.Name,
+                    PhoneNumber = model.PhoneNumber,
+                    BookingDateTime = DateTime.Now,
+                    IsPending = true,
+                    ServiceId = model.ServiceId,
+                    Date = model.Date,
+                    Time = model.Time
+                };
+                UnitOfWork.Instance.OrderRepository.Create(booking);
                 return Json(new { response = "OK" });
             }
             else

@@ -9,7 +9,7 @@ namespace BeautySalon.Models.Orders
 {
     public class BookingViewModel
     {
-        public List<ServiceViewModel> ServiceList;
+        //public List<ServiceViewModel> ServiceList;
 
         public int Id { get; set; }
 

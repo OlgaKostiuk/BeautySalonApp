@@ -92,8 +92,8 @@ h4 {
     cursor: pointer;
 }
 
-.CallbackOrdersList {
-    margin-top: 15px;
+.CallbackOrdersList, .BookingsList {
+    margin-top: 15px !important;
 }
 
 #pictureInHeader {
@@ -126,7 +126,7 @@ h4 {
 
 @media (max-width: 991px) {
     #buttonInHeader2 > button {
-        margin: 30px auto 30px auto;
+        margin: 30px auto auto auto;
     }
 
     #phoneInHeader2 {

@@ -7,7 +7,7 @@ using BeautySalon.Models.Orders;
 
 namespace BeautySalon.Repositories
 {
-    public class OrderRepository : BaseRepository, ICrud<CallbackOrder>
+    public class OrderRepository : BaseRepository, ICrud<CallbackOrder>, ICrud<Booking>
     {
         public OrderRepository(ApplicationDbContext context) : base(context)
         {
@@ -18,6 +18,23 @@ namespace BeautySalon.Repositories
             _context.CallbackOrders.Add(model);
             _context.SaveChanges();
             return model;
+        }
+
+        public Booking Create(Booking model)
+        {
+            _context.Bookings.Add(model);
+            _context.SaveChanges();
+            return model;
+        }
+
+        Booking ICrud<Booking>.GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Booking Update(Booking model)
+        {
+            throw new NotImplementedException();
         }
 
         public CallbackOrder GetById(int id)
@@ -40,9 +57,24 @@ namespace BeautySalon.Repositories
             _context.SaveChanges();
         }
 
+        public void DeleteBooking(int id)
+        {
+            Booking booking = _context.Bookings.FirstOrDefault(x => x.Id == id);
+
+            if (booking == null) return;
+
+            booking.IsPending = false;
+            _context.SaveChanges();
+        }
+
         public List<CallbackOrder> GetAllCallbackOrders()
         {
             return _context.CallbackOrders.Where(x => x.IsPending).OrderBy(x => x.DateTime).ToList();
+        }
+
+        public List<Booking> GetAllBookings()
+        {
+            return _context.Bookings.Where(x => x.IsPending).OrderBy(x => x.BookingDateTime).ToList();
         }
     }
 }

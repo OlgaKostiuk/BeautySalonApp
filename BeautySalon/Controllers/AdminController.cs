@@ -163,5 +163,22 @@ namespace BeautySalon.Controllers
             UnitOfWork.Instance.OrderRepository.Delete(id);
             return Json(new { response = "OK" });
         }
+
+        public ActionResult BookingsList()
+        {
+            List<BookingViewModel> viewModel = UnitOfWork.Instance.OrderRepository.GetAllBookings()
+                .Select(x => new BookingViewModel() { Id = x.Id, Name = x.Name, PhoneNumber = x.PhoneNumber, Date = x.Date, Time = x.Time, ServiceId = x.ServiceId}).ToList();
+            List<ServiceViewModel> serviceList = UnitOfWork.Instance.ServiceRepository.GetAll()
+                .Select(x => new ServiceViewModel() { Id = x.Id, Category = x, Services = x.Services.ToList() }).ToList();
+            ViewBag.ServiceList = serviceList;
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteBooking(int id)
+        {
+            UnitOfWork.Instance.OrderRepository.DeleteBooking(id);
+            return Json(new { response = "OK" });
+        }
     }
 }
