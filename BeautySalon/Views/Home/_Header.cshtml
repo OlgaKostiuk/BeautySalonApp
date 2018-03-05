@@ -153,7 +153,13 @@
 </div>
 
 <script type="text/javascript">
-    $(function() {
+    $(function () {
+        var callbackModalBody = $("#callbackForm .modal-body").clone();
+        var callbackModalFooter = $("#callbackForm .modal-footer").clone();
+
+        var bookingModalBody = $("#bookingForm .modal-body").clone();
+        var bookingModalFooter = $("#bookingForm .modal-footer").clone();
+
         $('.date-picker').datepicker($.datepicker.regional["ru"]);
 
         $("#submitCallback").click(function() {
@@ -185,8 +191,7 @@
             //}
         });
 
-        var callbackModalBody = $("#callbackForm .modal-body").clone();
-        var callbackModalFooter = $("#callbackForm .modal-footer").clone();
+
 
         $(".callbackFormOpen").click(function() {
             if ($("#submitCallback").length === 0) {
@@ -238,9 +243,6 @@
         });
 
         $(".bookingServiceGender[value='forWomen']").attr('checked', true).trigger("change");
-
-        var bookingModalBody = $("#bookingForm .modal-body").clone();
-        var bookingModalFooter = $("#bookingForm .modal-footer").clone();
         
         $("#submitBooking").click(function() {
             var formdata = $("#bookingForm").serialize();
