@@ -2,7 +2,7 @@
 @using BeautySalon.Models.Services
 @model BeautySalon.Models.Orders.BookingViewModel
 
-@*@Scripts.Render("~/bundles/jqueryval")*@
+@Scripts.Render("~/bundles/jqueryval")
 
 @{
     Layout = null;
@@ -185,7 +185,7 @@
                     success: function(response) {
                         if (response.response === "OK") {
                             $("#callbackForm .modal-body").empty();
-                            $("#callbackForm .modal-body").append("<p>Ваш запрос был отправлен</p>");
+                            $("#callbackForm .modal-body").append("<p>Ваш запрос был принят. В ближайшее время с Вами свяжется администратор нашего салона.</p>");
                             $("#submitCallback").remove();
                         } else {
                             $.each(response.msg,
@@ -264,7 +264,7 @@
                 success: function(response) {
                     if (response.response === "OK") {
                         $("#bookingForm .modal-body").empty();
-                        $("#bookingForm .modal-body").append("<p>Ваш запрос был отправлен</p>");
+                        $("#bookingForm .modal-body").append("<p>Ваш запрос был принят. В ближайшее время с Вами свяжется администратор нашего салона.</p>");
                         $("#submitBooking").remove();
                     } else {
                         $.each(response.msg,
