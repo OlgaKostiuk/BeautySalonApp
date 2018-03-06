@@ -46,7 +46,12 @@ namespace BeautySalon.Repositories
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            Promotion promotion = _context.Promotion.FirstOrDefault(x => x.Id == id);
+
+            if (promotion == null) return;
+
+            promotion.IsDeleted = true;
+            _context.SaveChanges();
         }
 
         public PageViewModel<Promotion> GetPage(int page, int size = 5)

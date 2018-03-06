@@ -143,6 +143,14 @@ namespace BeautySalon.Controllers
         }
 
         [HttpPost]
+        public ActionResult DeletePromotion(int id)
+        {
+
+            UnitOfWork.Instance.PromotionRepository.Delete(id);
+            return Json(new { response = "OK" });
+        }
+
+        [HttpPost]
         public ActionResult ApproveFeedback(int id)
         {
 

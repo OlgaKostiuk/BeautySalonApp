@@ -473,6 +473,7 @@
     <Content Include="dist\font\summernote.eot" />
     <Content Include="dist\font\summernote.ttf" />
     <Content Include="dist\font\summernote.woff" />
+    <Content Include="ClassDiagram2.cd" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\datepicker-ru.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

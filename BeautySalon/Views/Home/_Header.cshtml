@@ -2,7 +2,7 @@
 @using BeautySalon.Models.Services
 @model BeautySalon.Models.Orders.BookingViewModel
 
-@Scripts.Render("~/bundles/jqueryval")
+@*@Scripts.Render("~/bundles/jqueryval")*@
 
 @{
     Layout = null;
@@ -34,10 +34,14 @@
         </a>
     </div>
     <div id="buttonInHeader" class="col-md-3 hidden-sm hidden-xs">
-        <button type="button" class="bookingServiceOpen btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
+        <div class="row">
+            <button type="button" class="bookingServiceOpen btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
+        </div>
         @if (Request.IsAuthenticated && User.IsInRole(RoleTypes.Admin))
-        {
-            <button class="BookingsList btn btn-primary btn-lg">Список записей на услугу</button>
+            {
+            <div class="row">
+                <button class="BookingsList btn btn-primary btn-lg">Список записей на услугу</button>
+            </div>
         }
     </div>
 </div>
@@ -54,10 +58,14 @@
         }
     </div>
     <div id="buttonInHeader2" class="col-sm-6 col-xs-6 hidden-md hidden-lg">
-        <button type="button" class="bookingServiceOpen btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
+        <div class="row">
+            <button type="button" class="bookingServiceOpen btn roundBtn" data-toggle="modal" data-target="#BookService">Записаться в салон</button>
+        </div>
         @if (Request.IsAuthenticated && User.IsInRole(RoleTypes.Admin))
         {
-            <button class="BookingsList btn btn-primary btn-lg">Список записей на услугу</button>
+            <div class="row">
+                <button class="BookingsList btn btn-primary btn-lg">Список записей на услугу</button>
+            </div>
         }
     </div>
 </div>
@@ -94,7 +102,7 @@
                         <label>Выберите вид услуги:</label>
                         <select class="form-control" id="bookingServiceCategory"></select>
                     </div>
-                    
+
                     <div class="form-group">
                         <label>Выберите услугу:</label>
                         <select class="form-control" id="bookingService" name="ServiceId"></select>
@@ -243,7 +251,7 @@
         });
 
         $(".bookingServiceGender[value='forWomen']").attr('checked', true).trigger("change");
-        
+
         $("#submitBooking").click(function() {
             var formdata = $("#bookingForm").serialize();
 

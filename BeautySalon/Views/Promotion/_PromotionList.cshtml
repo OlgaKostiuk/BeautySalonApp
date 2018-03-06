@@ -7,7 +7,7 @@
         <div class="col-sm-10 col-sm-offset-1">
             @foreach (var promotion in Model)
             {
-                <div class="row">
+                <div class="promotion row" data-id="@promotion.Id">
                     <h3>@promotion.Title</h3>
 
                     <p>@(promotion.StartDate?.ToString("dd.MM.yyyy")) - @(promotion.EndDate?.ToString("dd.MM.yyyy"))</p>
@@ -45,11 +45,12 @@
                     <div class="col-lg-6 col-md-12 promotionDescription collapsed" data-id="@promotion.Id">@Html.Raw(promotion.Description)</div>
                 </div>
 
-                <div class="col-xs-12 text-right">
+                <div class="promotionBtns col-xs-12 text-right" data-id="@promotion.Id">
                     <button class="btn roundBtn readMoreBtn" data-id="@promotion.Id">Подробнее</button>
                     @if (Request.IsAuthenticated && User.IsInRole(RoleTypes.Admin))
                     {
-                    <button class="btn btn-info btn-lg edit" data-id="@promotion.Id">Редактировать</button>
+                        <button class="btn btn-info btn-lg edit" data-id="@promotion.Id">Редактировать</button>
+                        <button class="btn btn-danger btn-lg delete" data-id="@promotion.Id">Удалить</button>
                     }
                 </div>
             }
@@ -66,6 +67,23 @@
             $($(".promotionDescription[data-id=" + $(this).attr("data-id") + "]")[0]).toggleClass("collapsed");
             $(this).text(function(i, text) {
                 return text === "Подробнее" ? "Свернуть" : "Подробнее";
+            });
+        });
+
+        $(".delete").click(function () {
+            var id = $(this).attr("data-id");
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("DeletePromotion", "Admin")',
+                data: {id: id},
+                success: function(response) {
+                    if (response.response === "OK") {
+                        $(".promotion[data-id=" + id + "]").remove();
+                        $(".promotionBtns[data-id=" + id + "]").remove();
+                    } else {
+                        alert("Ошибка");
+                    }
+                }
             });
         });
     });
